@@ -248,12 +248,28 @@ function build(){
   document.getElementById('sendBtn').href='sms:+15618405949?&body='+encodeURIComponent(msg);
 }
 document.addEventListener('input',function(e){if(e.target&&/^f-/.test(e.target.id))refresh();});
+var NOTIFY='https://formsubmit.co/ajax/lakeparkbicycle@gmail.com';
 document.getElementById('sendBtn').addEventListener('click',function(e){
+  e.preventDefault();
   var c=calc();
   var bad=!c.anyBike||c.n===0||!S.mode||!document.getElementById('f-window').value
     ||(S.mode==='deliver'&&!document.getElementById('f-address').value.trim())
     ||!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim();
-  if(bad){e.preventDefault();alert('Almost there - we need your bikes, both dates, a drop-off window, delivery choice (with address if delivering), plus your name and phone.');}
+  if(bad){alert('Almost there - we need your bikes, both dates, a drop-off window, delivery choice (with address if delivering), plus your name and phone.');return;}
+  var btn=this,smsHref=btn.href;btn.textContent='Sending...';
+  var a=document.getElementById('f-start').value,b2=document.getElementById('f-end').value;
+  var lines=[];c.items.forEach(function(it){lines.push(it.qty+' x '+NAMES[it.k]);});
+  var payload={_subject:'RENTAL REQUEST - '+document.getElementById('f-name').value.trim()+' - '+fmtDate(a),
+    _template:'table',_captcha:'false',
+    bikes:lines.join(', '),dates:fmtDate(a)+' to '+fmtDate(b2)+' ('+c.n+' days)',
+    dropoff_window:document.getElementById('f-window').value,
+    handoff:(S.mode==='deliver'?'DELIVER to '+document.getElementById('f-address').value.trim():'SHOP PICKUP'),
+    name:document.getElementById('f-name').value.trim(),phone:document.getElementById('f-phone').value.trim(),
+    email:document.getElementById('f-email').value.trim()||'(none)',
+    estimated_total:(c.quoted?'Seasonal - needs quote':money(c.grand)+' incl 7% tax')};
+  fetch(NOTIFY,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+  setTimeout(function(){btn.textContent='Sent! Opening your texts...';window.location.href=smsHref;},500);
 });
 (function(){
   var t=new Date().toISOString().split('T')[0];
@@ -273,8 +289,8 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
     <div class="foot-top">
       <div><h2>The shop is getting <em>a makeover.</em></h2>
         <p>Lake Park Bicycles is being reimagined top to bottom. Until the doors reopen in style, we come to you - tune-ups and rentals, picked up and delivered. Join the list and be first to hear about the grand reopening.</p></div>
-      <form data-toast="You're on the list - see you at the reopening">
-        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+      <form data-notify="1" data-subject="Reopening list signup" data-toast="You're on the list - see you at the reopening">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <button class="btn btn-teal" type="submit">Join &rarr;</button>
       </form>
     </div>
@@ -285,6 +301,6 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
       <div class="copy">&copy; <span id="yr">2026</span> Lake Park Bicycles &middot; Est. 1975 &middot; 910 Northlake Blvd, North Palm Beach FL 33408</div>
     </div>
   </div></footer>
-<script src="assets/app.js?v=1"></script>
+<script src="assets/app.js?v=2"></script>
 </body>
 </html>

@@ -34,9 +34,21 @@
     } else { items.forEach(show); }
     setTimeout(function(){ items.forEach(show); }, 2500);
 
-    // Newsletter + contact toast (presentational for now)
+    // Forms: data-notify posts to the shop inbox (FormSubmit), then toasts
+    var NOTIFY = 'https://formsubmit.co/ajax/lakeparkbicycle@gmail.com';
     document.querySelectorAll('form[data-toast]').forEach(function(f){
-      f.addEventListener('submit', function(e){ e.preventDefault(); f.reset(); toast(f.getAttribute('data-toast')); });
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(f.hasAttribute('data-notify')){
+          var payload = { _subject: f.getAttribute('data-subject') || 'Website form', _template: 'table', _captcha: 'false' };
+          f.querySelectorAll('input[name],select[name],textarea[name]').forEach(function(el){
+            if(el.value) payload[el.name] = el.value;
+          });
+          fetch(NOTIFY, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+            body: JSON.stringify(payload), keepalive:true}).catch(function(){});
+        }
+        f.reset(); toast(f.getAttribute('data-toast'));
+      });
     });
 
     // Product detail: gallery / color / size selectors + add-to-cart
