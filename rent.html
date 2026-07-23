@@ -50,24 +50,55 @@
 .qty button:hover{border-color:var(--teal);color:var(--teal-d)}
 .qty .n{font-weight:700;color:var(--deep);font-size:18px;min-width:22px}
 .wnext{display:flex;justify-content:center;margin-top:28px}
+.daterow{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto}
+.daterow label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.rateline{max-width:520px;margin:18px auto 0;background:var(--teal-soft);border:1px solid rgba(18,163,160,.3);border-radius:14px;padding:14px 18px;text-align:center;color:var(--teal-d);font-weight:600;font-size:14.5px;display:none}
+.rateline.warn{background:#fff4e8;border-color:#f0c894;color:#a06616}
 .wtotal{position:sticky;bottom:12px;background:var(--deep);color:#fff;border-radius:16px;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;margin-top:26px;box-shadow:0 -6px 30px rgba(14,58,77,.2)}
 .wtotal .lab{font-size:12.5px;color:#bfe3ef}
 .wtotal .amt{font-family:"Fraunces",serif;font-weight:700;font-size:24px}
 .wfield{display:grid;gap:14px;max-width:480px;margin:0 auto}
-.wfield input,.wfield select{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;color:var(--deep);font-family:inherit;font-size:15px;outline:none;width:100%}
-.wfield input:focus{border-color:var(--teal)}
+.wfield input,.wfield select,.daterow input{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;color:var(--deep);font-family:inherit;font-size:15px;outline:none;width:100%}
+.wfield input:focus,.daterow input:focus{border-color:var(--teal)}
 .rvw{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;max-width:560px;margin:0 auto}
 .rvw .row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--slate)}
 .rvw .row b{color:var(--deep);white-space:nowrap}
 .rvw .row:last-child{border-bottom:0}
+.rvw .bh{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);padding:16px 0 4px}
+.rvw .row.sub span,.rvw .row.sub b{font-weight:600}
+.rvw .row.grand{border-top:2px solid var(--deep);margin-top:2px}
+.rvw .row.grand b,.rvw .row.grand span{color:var(--deep);font-weight:700;font-size:16px}
 .wedit{text-align:center;color:var(--muted);font-size:12.5px;margin-top:10px}
-@media(max-width:720px){.optrow{grid-template-columns:1fr}}
+.rentbanner{position:relative;max-width:1100px;margin:10px auto 0;padding:0 28px}
+.rentbanner .frame{position:relative;overflow:hidden;border-radius:22px;box-shadow:var(--shadow)}
+.rentbanner img{width:100%;height:min(44vh,400px);object-fit:cover;display:block;animation:bzoom 22s ease-in-out infinite alternate}
+@keyframes bzoom{to{transform:scale(1.09)}}
+.rentbanner .chip{position:absolute;left:18px;top:18px;z-index:2}
+.ridebar{position:relative;max-width:860px;height:54px;margin:16px auto -18px;overflow:hidden}
+.ridebar:before{content:"";position:absolute;left:28px;right:28px;bottom:14px;border-bottom:2px dashed var(--line-2)}
+.rb-bike{position:absolute;bottom:9px;left:-70px;width:56px;animation:rbride 14s linear infinite}
+@keyframes rbride{0%{left:-70px}100%{left:102%}}
+.rb-w{transform-box:fill-box;transform-origin:center;animation:rbspin 1.1s linear infinite}
+@keyframes rbspin{to{transform:rotate(360deg)}}
+.bikeimg{width:74%;max-width:190px;margin:0 auto 8px;display:block;animation:illbob 4.5s ease-in-out infinite}
+#c-mens .bikeimg{animation-delay:.6s}#c-ebike .bikeimg{animation-delay:1.2s}
+@keyframes illbob{50%{transform:translateY(-7px)}}
+.vanimg{width:60%;max-width:150px;margin:0 auto 6px;display:block}
+@media(max-width:720px){.optrow{grid-template-columns:1fr}.daterow{grid-template-columns:1fr}.rentbanner{padding:0 18px}}
 </style>
 <section class="page-hero" style="padding-bottom:18px"><div class="in">
   <div class="crumb" data-reveal><a href="index.html">Home</a> / <a href="rentals.html">Rentals</a> / Reserve</div>
   <h1 data-reveal style="text-align:center">Reserve your <em>ride.</em></h1>
   <p class="lead" data-reveal style="text-align:center;max-width:560px;margin:14px auto 0">Everything stays on one page - scroll up any time to see or change what you picked, and the total updates as you go.</p>
 </div></section>
+<div class="rentbanner" data-reveal><div class="frame"><img src="assets/img/fleet.jpg" alt="Our rental fleet lined up near the beach"><span class="chip">Delivered - Jupiter to Lake Park</span></div></div>
+<div class="ridebar" aria-hidden="true">
+  <svg class="rb-bike" viewBox="0 0 60 40" fill="none">
+    <g class="rb-w"><circle cx="13" cy="28" r="9" stroke="#12a3a0" stroke-width="2"/><path d="M13 19v18M4 28h18" stroke="#f2957a" stroke-width="1.3"/></g>
+    <g class="rb-w"><circle cx="47" cy="28" r="9" stroke="#12a3a0" stroke-width="2"/><path d="M47 19v18M38 28h18" stroke="#f2957a" stroke-width="1.3"/></g>
+    <path d="M13 28 L25 14 L40 14 L47 28 M25 14 L30 28 L13 28 M40 14 L37 9 M33 9 h8 M25 14 L23 10 M20 10 h7" stroke="#0e3a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div>
 <div class="wiz">
   <div class="wizsteps"><i class="on"></i><i id="sb2"></i><i id="sb3"></i><i id="sb4"></i></div>
 
@@ -75,42 +106,39 @@
     <h2 class="wq">1. What are you looking for?</h2>
     <p class="wsub">Pick as many as you need - helmet, lock and ride map included with every bike.</p>
     <div class="optrow">
-      <div class="optcard" id="c-womens"><div class="t">Women's Bike</div><div class="pr">$29 / day &middot; $120 / week</div><div class="d">Comfort cruiser, basket</div>
+      <div class="optcard" id="c-womens"><img class="bikeimg" src="assets/img/ill-womens.png" alt=""><div class="t">Women's Bike</div><div class="pr">$29 / day &middot; $120 / week</div><div class="d">Comfort cruiser, basket</div>
         <div class="qty"><button type="button" onclick="q('womens',-1)">&minus;</button><span class="n" id="n-womens">0</span><button type="button" onclick="q('womens',1)">+</button></div></div>
-      <div class="optcard" id="c-mens"><div class="t">Men's Bike</div><div class="pr">$29 / day &middot; $120 / week</div><div class="d">Easy-riding, all-around</div>
+      <div class="optcard" id="c-mens"><img class="bikeimg" src="assets/img/ill-mens.png" alt=""><div class="t">Men's Bike</div><div class="pr">$29 / day &middot; $120 / week</div><div class="d">Easy-riding, all-around</div>
         <div class="qty"><button type="button" onclick="q('mens',-1)">&minus;</button><span class="n" id="n-mens">0</span><button type="button" onclick="q('mens',1)">+</button></div></div>
-      <div class="optcard" id="c-ebike"><div class="t">E-Bike</div><div class="pr">$55 / day &middot; $200 / week</div><div class="d">Go further, sweat less</div>
+      <div class="optcard" id="c-ebike"><img class="bikeimg" src="assets/img/ill-ebike.png" alt=""><div class="t">E-Bike</div><div class="pr">$55 / day &middot; $200 / week</div><div class="d">Go further, sweat less</div>
         <div class="qty"><button type="button" onclick="q('ebike',-1)">&minus;</button><span class="n" id="n-ebike">0</span><button type="button" onclick="q('ebike',1)">+</button></div></div>
     </div>
-    <div class="wnext" id="nb1"><button class="btn btn-teal btn-lg" onclick="unlock(2,'nb1')">Next: how long &rarr;</button></div>
+    <div class="wnext" id="nb1"><button class="btn btn-teal btn-lg" onclick="unlock(2,'nb1')">Next: pick your dates &rarr;</button></div>
   </div>
 
   <div class="wpanel" id="wp2">
-    <h2 class="wq">2. How long do you need them?</h2>
-    <p class="wsub">Monthly and snowbird-season rates: we'll quote you - just pick "Month / season".</p>
-    <div class="optrow">
-      <div class="optcard" id="d-day" onclick="dur('day')"><div class="t">Full Day</div><div class="d">Morning to evening</div></div>
-      <div class="optcard" id="d-week" onclick="dur('week')"><div class="t">One Week</div><div class="d">Free delivery &amp; pickup</div></div>
-      <div class="optcard" id="d-season" onclick="dur('season')"><div class="t">Month / Season</div><div class="d">We'll quote you - best rates</div></div>
+    <h2 class="wq">2. From when to when?</h2>
+    <p class="wsub">Tell us your first and last day - we'll work out the best rate for you automatically.</p>
+    <div class="daterow">
+      <div><label for="f-start">First day (we deliver)</label><input type="date" id="f-start"></div>
+      <div><label for="f-end">Last day (we pick up)</label><input type="date" id="f-end"></div>
     </div>
-    <div class="wfield" style="margin-top:26px">
-      <input type="date" id="f-date" aria-label="Start date">
-      <select id="f-window" aria-label="Delivery window">
-        <option value="" disabled selected>Delivery window (Mon-Sat)</option>
-        <option>9:00 - 11:00 am</option><option>11:00 am - 1:00 pm</option><option>1:00 - 3:00 pm</option><option>2:00 - 4:00 pm</option>
-      </select>
-    </div>
-    <div class="wnext" id="nb2"><button class="btn btn-teal btn-lg" onclick="unlock(3,'nb2')">Next: delivery &rarr;</button></div>
+    <div class="rateline" id="rateline"></div>
+    <div class="wnext" id="nb2"><button class="btn btn-teal btn-lg" onclick="unlock(3,'nb2')">Next: schedule delivery &rarr;</button></div>
   </div>
 
   <div class="wpanel" id="wp3">
-    <h2 class="wq">3. Delivered, or pick up at the shop?</h2>
+    <h2 class="wq">3. Let's schedule your delivery.</h2>
     <p class="wsub">Delivery and pickup is free on rentals of 3 days or more, otherwise a flat $19. Shop pickup is always free.</p>
     <div class="optrow" style="grid-template-columns:1fr 1fr">
-      <div class="optcard" id="m-deliver" onclick="mode('deliver')"><div class="t">Deliver to me</div><div class="d">Hotel, condo or home - Jupiter to Lake Park</div></div>
-      <div class="optcard" id="m-shop" onclick="mode('shop')"><div class="t">Shop pickup - free</div><div class="d">910 Northlake Blvd, North Palm Beach</div></div>
+      <div class="optcard" id="m-deliver" onclick="mode('deliver')"><img class="vanimg" src="assets/img/ill-van.png" alt=""><div class="t">Deliver to me</div><div class="d">Hotel, condo or home - Jupiter to Lake Park</div></div>
+      <div class="optcard" id="m-shop" onclick="mode('shop')"><img class="vanimg" src="assets/img/logo-badge.png" alt="" style="width:76px;border-radius:50%"><div class="t">Shop pickup - free</div><div class="d">910 Northlake Blvd, North Palm Beach</div></div>
     </div>
     <div class="wfield" style="margin-top:26px">
+      <select id="f-window" aria-label="Drop-off window">
+        <option value="" disabled selected>Drop-off window on your first day (Mon-Sat)</option>
+        <option>9:00 - 11:00 am</option><option>11:00 am - 1:00 pm</option><option>1:00 - 3:00 pm</option><option>2:00 - 4:00 pm</option>
+      </select>
       <input type="text" id="f-address" placeholder="Delivery address (hotel, condo or home)">
       <input type="text" id="f-name" placeholder="Your name">
       <input type="tel" id="f-phone" placeholder="Phone (we confirm by text)">
@@ -129,23 +157,57 @@
   </div>
 </div>
 <script>
-var S={womens:0,mens:0,ebike:0,dur:null,mode:null};
-var P={day:{womens:29,mens:29,ebike:55},week:{womens:120,mens:120,ebike:200}};
+var S={womens:0,mens:0,ebike:0,mode:null};
+var DR={womens:29,mens:29,ebike:55},WR={womens:120,mens:120,ebike:200};
+var NAMES={womens:"Women's bike",mens:"Men's bike",ebike:"E-bike"};
+var TAX=0.07; /* FL 6% + Palm Beach County 1% surtax */
+function money(x){return '$'+(Math.round(x*100)/100).toFixed(2).replace(/\.00$/,'');}
+function fmtDate(v){if(!v)return '';var d=new Date(v+'T12:00:00');return d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}
 function q(k,d){S[k]=Math.max(0,S[k]+d);document.getElementById('n-'+k).textContent=S[k];
   document.getElementById('c-'+k).classList.toggle('sel',S[k]>0);refresh();}
-function dur(v){S.dur=v;['day','week','season'].forEach(function(x){document.getElementById('d-'+x).classList.toggle('sel',x===v);});refresh();}
 function mode(v){S.mode=v;['deliver','shop'].forEach(function(x){document.getElementById('m-'+x).classList.toggle('sel',x===v);});
   document.getElementById('f-address').style.display=(v==='deliver')?'block':'none';refresh();}
+function days(){
+  var a=document.getElementById('f-start').value,b=document.getElementById('f-end').value;
+  if(!a||!b)return 0;
+  var n=Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)+1;
+  return n>=1?n:0;
+}
+function calc(){
+  var n=days(),quoted=n>=28,sub=0,items=[],anyBike=(S.womens+S.mens+S.ebike>0);
+  ['womens','mens','ebike'].forEach(function(k){
+    if(S[k]>0){
+      var per=0;
+      if(n>0&&!quoted){var wks=Math.floor(n/7),rem=n%7;per=Math.min(n*DR[k],wks*WR[k]+Math.min(rem*DR[k],WR[k]));}
+      items.push({k:k,qty:S[k],per:per,cost:S[k]*per});
+      sub+=S[k]*per;
+    }
+  });
+  var delFee=0,delLab='(choose above)';
+  if(S.mode==='shop')delLab='Shop pickup - free';
+  if(S.mode==='deliver'){if(n>0&&n<3){delFee=19;delLab='Delivery + pickup';}else{delLab='Delivery + pickup - free (3+ days)';}}
+  var tax=quoted?0:(sub+delFee)*TAX;
+  return {n:n,quoted:quoted,sub:sub,items:items,delFee:delFee,delLab:delLab,tax:tax,grand:sub+delFee+tax,anyBike:anyBike};
+}
+function rateline(){
+  var el=document.getElementById('rateline'),c=calc();
+  if(c.n===0){el.style.display='none';return;}
+  el.style.display='block';
+  if(c.quoted){el.className='rateline warn';el.textContent='That is '+c.n+' days - a monthly or seasonal stay. Send the request and we will text you our best quote.';}
+  else if(!c.anyBike){el.className='rateline warn';el.textContent=c.n+' day'+(c.n>1?'s':'')+' - now scroll up and pick your bikes so we can price it.';}
+  else{el.className='rateline';el.textContent='That is '+c.n+' day'+(c.n>1?'s':'')+' - your bikes come to '+money(c.sub)+' plus tax, best rate applied automatically'+(c.n>=3?' (and delivery is free).':'.');}
+}
 function opened(n){return document.getElementById('wp'+n).classList.contains('on');}
 function unlock(n,btn){
   if(n===2&&S.womens+S.mens+S.ebike===0){alert('Pick at least one bike to keep going.');return;}
   if(n===3){
-    if(!S.dur){alert('Pick how long you need the bikes.');return;}
-    if(!document.getElementById('f-date').value){alert('Pick your start date - we deliver on that day.');return;}
-    if(!document.getElementById('f-window').value){alert('Pick a delivery window - that is when we arrive with the bikes.');return;}
+    if(!document.getElementById('f-start').value){alert('Pick your first day - that is the day we deliver.');return;}
+    if(!document.getElementById('f-end').value){alert('Pick your last day - that is the day we come get the bikes.');return;}
+    if(days()===0){alert('Your last day has to be the same day or after your first day.');return;}
   }
   if(n===4){
     if(!S.mode){alert('Choose delivery or shop pickup.');return;}
+    if(!document.getElementById('f-window').value){alert('Pick a drop-off window - that is when we arrive on your first day.');return;}
     if(S.mode==='deliver'&&!document.getElementById('f-address').value.trim()){alert('We need the delivery address - hotel, condo or home.');return;}
     if(!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim()){
       alert('We need your name and phone so we can confirm by text.');return;}
@@ -156,44 +218,55 @@ function unlock(n,btn){
   refresh();
   setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'start'});},60);
 }
-function refresh(){if(opened(4))build();}
+function refresh(){rateline();if(opened(4))build();}
 function build(){
-  var durlab=S.dur?({day:'Full day',week:'One week',season:'Month / season (quoted)'}[S.dur]):'(pick a length above)';
-  var lines=[],total=0,quoted=(S.dur==='season');
-  ['womens','mens','ebike'].forEach(function(k){
-    if(S[k]>0){var lab={womens:"Women's bike",mens:"Men's bike",ebike:"E-bike"}[k];
-      lines.push(S[k]+' x '+lab);if(S.dur&&!quoted){total+=S[k]*P[S.dur][k];}}
-  });
-  var dt=document.getElementById('f-date').value||'(date TBD)';
+  var c=calc();
+  var a=document.getElementById('f-start').value,b=document.getElementById('f-end').value;
+  var datelab=(a&&b)?(fmtDate(a)+' to '+fmtDate(b)+' &middot; '+c.n+' day'+(c.n>1?'s':'')):'(pick dates above)';
+  var lines=[];c.items.forEach(function(it){lines.push(it.qty+' x '+NAMES[it.k]);});
   var win=document.getElementById('f-window').value||'(window TBD)';
-  var delFee=0,delLab=(S.mode==='shop')?'Shop pickup - free':'(choose above)';
-  if(S.mode==='deliver'){delLab=(S.dur==='day')?'Delivery + pickup: $19':'Delivery + pickup: FREE (3+ days)';
-    if(S.dur==='day')delFee=19;}
   var addr=document.getElementById('f-address').value.trim();
   var nm=document.getElementById('f-name').value.trim(),ph=document.getElementById('f-phone').value.trim(),em=document.getElementById('f-email').value.trim();
   var h='';
   h+='<div class="row"><b>Bikes</b><span>'+(lines.length?lines.join(', '):'(add bikes above)')+'</span></div>';
-  h+='<div class="row"><b>Length</b><span>'+durlab+'</span></div>';
-  h+='<div class="row"><b>Start</b><span>'+dt+' &middot; '+win+'</span></div>';
-  h+='<div class="row"><b>Hand-off</b><span>'+delLab+(addr&&S.mode==='deliver'?' &middot; '+addr:'')+'</span></div>';
+  h+='<div class="row"><b>Dates</b><span>'+datelab+'</span></div>';
+  h+='<div class="row"><b>Drop-off</b><span>'+win+(a?' on '+fmtDate(a):'')+'</span></div>';
+  h+='<div class="row"><b>Hand-off</b><span>'+(S.mode==='deliver'?'Delivered'+(addr?' to '+addr:''):(S.mode==='shop'?'Pick up at the shop':'(choose above)'))+'</span></div>';
   h+='<div class="row"><b>Contact</b><span>'+(nm?nm+' &middot; ':'')+ph+(em?' &middot; '+em:'')+'</span></div>';
+  if(!c.quoted&&c.anyBike&&c.n>0){
+    h+='<div class="bh">The math</div>';
+    c.items.forEach(function(it){h+='<div class="row"><b>'+it.qty+' x '+NAMES[it.k]+'</b><span>'+money(it.per)+' each &middot; '+money(it.cost)+'</span></div>';});
+    if(S.mode==='deliver')h+='<div class="row"><b>Delivery + pickup</b><span>'+(c.delFee?money(c.delFee):'FREE')+'</span></div>';
+    h+='<div class="row sub"><b>Subtotal</b><span>'+money(c.sub+c.delFee)+'</span></div>';
+    h+='<div class="row"><b>Sales tax (7%)</b><span>'+money(c.tax)+'</span></div>';
+    h+='<div class="row grand"><b>Total</b><span>'+money(c.grand)+'</span></div>';
+  }
   document.getElementById('rvw').innerHTML=h;
-  document.getElementById('t-amt').textContent=quoted?'We quote you':'$'+(total+delFee);
-  document.getElementById('t-lab').textContent=quoted?'Seasonal rate':'Estimated total'+(S.mode==='deliver'&&S.dur==='day'?' (incl. $19 delivery)':'');
-  var msg='RENTAL REQUEST - '+lines.join(', ')+' | '+durlab+' | Start: '+dt+' '+win+' | '+delLab+(addr?' | Addr: '+addr:'')+' | '+nm+' '+ph+(em?' '+em:'');
+  document.getElementById('t-amt').textContent=c.quoted?'We quote you':money(c.grand);
+  document.getElementById('t-lab').textContent=c.quoted?'Monthly / seasonal - best quote by text':'Total incl. 7% sales tax';
+  var msg='RENTAL REQUEST - '+lines.join(', ')+' | '+(a&&b?fmtDate(a)+' to '+fmtDate(b)+' ('+c.n+' days)':'dates TBD')+' | Drop-off: '+win+' | '+(S.mode==='deliver'?'DELIVER'+(addr?' to '+addr:''):'SHOP PICKUP')+' | '+nm+' '+ph+(em?' '+em:'')+(c.quoted?' | SEASONAL - NEEDS QUOTE':' | Est total '+money(c.grand)+' incl tax');
   document.getElementById('sendBtn').href='sms:+15618405949?&body='+encodeURIComponent(msg);
 }
 document.addEventListener('input',function(e){if(e.target&&/^f-/.test(e.target.id))refresh();});
 document.getElementById('sendBtn').addEventListener('click',function(e){
-  var bad=S.womens+S.mens+S.ebike===0||!S.dur||!S.mode||!document.getElementById('f-date').value||!document.getElementById('f-window').value
+  var c=calc();
+  var bad=!c.anyBike||c.n===0||!S.mode||!document.getElementById('f-window').value
     ||(S.mode==='deliver'&&!document.getElementById('f-address').value.trim())
     ||!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim();
-  if(bad){e.preventDefault();alert('Almost there - we need your bikes, length, date and window, delivery choice (with address if delivering), plus your name and phone.');}
+  if(bad){e.preventDefault();alert('Almost there - we need your bikes, both dates, a drop-off window, delivery choice (with address if delivering), plus your name and phone.');}
 });
-(function(){var d=document.getElementById('f-date');if(d){d.min=new Date().toISOString().split('T')[0];
-  d.addEventListener('change',function(){if(new Date(d.value+'T12:00:00').getDay()===0){alert('We deliver Monday through Saturday - pick another day and we will make it work.');d.value='';}});}
-  if(location.hash==='#all'){unlockAllDemo();}
-  function unlockAllDemo(){[2,3,4].forEach(function(n,i){document.getElementById('wp'+n).classList.add('on');var b=document.getElementById('nb'+(n-1));if(b)b.style.display='none';var sb=document.getElementById('sb'+n);if(sb)sb.classList.add('on');});build();}
+(function(){
+  var t=new Date().toISOString().split('T')[0];
+  ['f-start','f-end'].forEach(function(id){
+    var d=document.getElementById(id);d.min=t;
+    d.addEventListener('change',function(){
+      if(d.value&&new Date(d.value+'T12:00:00').getDay()===0){
+        alert('We deliver and pick up Monday through Saturday - pick another day and we will make it work.');d.value='';refresh();return;}
+      if(id==='f-start'&&d.value){document.getElementById('f-end').min=d.value;}
+      refresh();
+    });
+  });
+  if(location.hash==='#all'){[2,3,4].forEach(function(n){document.getElementById('wp'+n).classList.add('on');var b=document.getElementById('nb'+(n-1));if(b)b.style.display='none';var sb=document.getElementById('sb'+n);if(sb)sb.classList.add('on');});build();}
 })();
 </script>
 <footer class="site"><div class="foot">
