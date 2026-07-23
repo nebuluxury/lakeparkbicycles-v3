@@ -83,7 +83,7 @@
 .bikeimg{width:74%;max-width:190px;margin:0 auto 8px;display:block;animation:illbob 4.5s ease-in-out infinite}
 #c-mens .bikeimg{animation-delay:.6s}#c-ebike .bikeimg{animation-delay:1.2s}
 @keyframes illbob{50%{transform:translateY(-7px)}}
-.vanimg{width:60%;max-width:150px;margin:0 auto 6px;display:block}
+.vanimg{height:128px;width:auto;max-width:82%;object-fit:contain;margin:0 auto 10px;display:block}
 @media(max-width:720px){.optrow{grid-template-columns:1fr}.daterow{grid-template-columns:1fr}.rentbanner{padding:0 18px}}
 </style>
 <section class="page-hero" style="padding-bottom:18px"><div class="in">
@@ -132,7 +132,7 @@
     <p class="wsub">Delivery and pickup is free on rentals of 3 days or more, otherwise a flat $19. Shop pickup is always free.</p>
     <div class="optrow" style="grid-template-columns:1fr 1fr">
       <div class="optcard" id="m-deliver" onclick="mode('deliver')"><img class="vanimg" src="assets/img/ill-van.png" alt=""><div class="t">Deliver to me</div><div class="d">Hotel, condo or home - Jupiter to Lake Park</div></div>
-      <div class="optcard" id="m-shop" onclick="mode('shop')"><img class="vanimg" src="assets/img/logo-badge.png" alt="" style="width:76px;border-radius:50%"><div class="t">Shop pickup - free</div><div class="d">910 Northlake Blvd, North Palm Beach</div></div>
+      <div class="optcard" id="m-shop" onclick="mode('shop')"><img class="vanimg" src="assets/img/logo-badge.png" alt="" style="border-radius:50%"><div class="t">Shop pickup - free</div><div class="d">910 Northlake Blvd, North Palm Beach</div></div>
     </div>
     <div class="wfield" style="margin-top:26px">
       <select id="f-window" aria-label="Drop-off window">
