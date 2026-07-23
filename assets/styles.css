@@ -387,3 +387,7 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .affirm-line{background:var(--teal-soft);border:1px solid #bfe3df;border-radius:12px;padding:12px 15px;color:var(--deep);font-size:14.5px;margin:-4px 0 24px}
 .affirm-line b{color:var(--deep);font-weight:700}
 .affirm-line .fin-sub{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+/* booking form selects */
+.cform select{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;color:var(--deep);font-family:inherit;font-size:15px;outline:none;width:100%;transition:border-color .2s ease;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234a6470' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.cform select:focus{border-color:var(--teal)}

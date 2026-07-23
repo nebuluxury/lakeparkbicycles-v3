@@ -42,14 +42,38 @@
       <p style="color:var(--muted);font-size:13.5px;margin-top:18px">910 Northlake Blvd, North Palm Beach, FL 33408. The shop is mid-makeover - for now, let us come to you.</p>
       <a href="https://maps.google.com/?q=910+Northlake+Blvd,+North+Palm+Beach,+FL+33408" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:14px">Get directions &rarr;</a>
       <div class="opt-lab" style="margin-top:40px"><b>Book a pickup or delivery</b></div>
-      <form class="cform" data-toast="Thanks - we'll get right back to you">
+      <form class="cform" data-toast="Request received - we'll text you to confirm your window" id="bookForm">
+        <select name="service" required aria-label="What do you need">
+          <option value="" disabled selected>What do you need?</option>
+          <option>$99 Tune-Up - pickup &amp; return (pedal bikes)</option>
+          <option>Rental delivery - full day</option>
+          <option>Rental delivery - one week</option>
+          <option>Rental delivery - month / season</option>
+          <option>A repair (including e-bikes)</option>
+        </select>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <input type="date" name="date" id="bookDate" required aria-label="Preferred day">
+          <select name="window" required aria-label="Two-hour window">
+            <option value="" disabled selected>2-hour window</option>
+            <option>9:00 - 11:00 am</option>
+            <option>11:00 am - 1:00 pm</option>
+            <option>1:00 - 3:00 pm</option>
+            <option>2:00 - 4:00 pm</option>
+          </select>
+        </div>
+        <p style="color:var(--muted);font-size:12.5px;margin:-4px 0 0">Pickups &amp; deliveries run Monday - Saturday, 9 am - 4 pm.</p>
         <input type="text" name="name" placeholder="Your name" required aria-label="Your name">
-        <input type="tel" name="phone" placeholder="Phone (for pickup coordination)" required aria-label="Phone">
+        <input type="tel" name="phone" placeholder="Phone (we confirm by text)" required aria-label="Phone">
         <input type="email" name="email" placeholder="Email address" aria-label="Email">
-        <input type="text" name="topic" placeholder="Tune-up pickup, rental delivery, or a repair?" aria-label="Topic">
-        <textarea name="message" placeholder="Address for pickup / delivery, and anything we should know"></textarea>
-        <button class="btn btn-coral" type="submit" style="justify-self:start">Send it &rarr;</button>
+        <textarea name="message" placeholder="Pickup / delivery address, and anything we should know"></textarea>
+        <button class="btn btn-coral" type="submit" style="justify-self:start">Request my window &rarr;</button>
       </form>
+      <script>
+      (function(){var d=document.getElementById('bookDate');if(!d)return;
+        d.min=new Date().toISOString().split('T')[0];
+        d.addEventListener('change',function(){var day=new Date(d.value+'T12:00:00').getDay();
+          if(day===0){alert('We run pickups Monday through Saturday - Sundays we are closed. Pick another day and we will make it work.');d.value='';}});
+      })();</script>
     </div>
     <div class="map" data-reveal style="align-self:start">
       <iframe src="https://www.google.com/maps?q=910+Northlake+Blvd,+North+Palm+Beach,+FL+33408&output=embed" title="Map to Lake Park Bicycles" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
