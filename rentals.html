@@ -72,7 +72,7 @@
     <div class="foot-top">
       <div><h2>The shop is getting <em>a makeover.</em></h2>
         <p>Lake Park Bicycles is being reimagined top to bottom. Until the doors reopen in style, we come to you - tune-ups and rentals, picked up and delivered. Join the list and be first to hear about the grand reopening.</p></div>
-      <form data-notify="1" data-subject="Reopening list signup" data-toast="You're on the list - see you at the reopening">
+      <form data-notify="1" data-formname="newsletter" data-subject="Reopening list signup" data-toast="You're on the list - see you at the reopening">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <button class="btn btn-teal" type="submit">Join &rarr;</button>
       </form>
@@ -83,7 +83,13 @@
       <nav><a href="tel:+15618420303">561&middot;842&middot;0303</a><a href="sms:+15618405949">Text 561&middot;840&middot;5949</a></nav>
       <div class="copy">&copy; <span id="yr">2026</span> Lake Park Bicycles &middot; Est. 1975 &middot; 910 Northlake Blvd, North Palm Beach FL 33408</div>
     </div>
+    <div hidden aria-hidden="true">
+      <form name="rental" data-netlify="true"><input type="hidden" name="form-name" value="rental"><input name="bikes"><input name="dates"><input name="dropoff_window"><input name="handoff"><input name="address"><input name="name"><input name="phone"><input name="email"><input name="estimated_total"></form>
+      <form name="tuneup" data-netlify="true"><input type="hidden" name="form-name" value="tuneup"><input name="the_package"><input name="pickup"><input name="address"><input name="day"><input name="bike"><input name="name"><input name="phone"><input name="email"><input name="total"></form>
+      <form name="contact" data-netlify="true"><input type="hidden" name="form-name" value="contact"><input name="service"><input name="topic"><input name="date"><input name="window"><input name="name"><input name="phone"><input name="email"><input name="message"></form>
+      <form name="newsletter" data-netlify="true"><input type="hidden" name="form-name" value="newsletter"><input name="email"></form>
+    </div>
   </div></footer>
-<script src="assets/app.js?v=2"></script>
+<script src="assets/app.js?v=3"></script>
 </body>
 </html>

@@ -34,18 +34,18 @@
     } else { items.forEach(show); }
     setTimeout(function(){ items.forEach(show); }, 2500);
 
-    // Forms: data-notify posts to the shop inbox (FormSubmit), then toasts
-    var NOTIFY = 'https://formsubmit.co/ajax/lakeparkbicycle@gmail.com';
+    // Forms: data-notify posts to Netlify Forms (captured in the dashboard), then toasts
     document.querySelectorAll('form[data-toast]').forEach(function(f){
       f.addEventListener('submit', function(e){
         e.preventDefault();
         if(f.hasAttribute('data-notify')){
-          var payload = { _subject: f.getAttribute('data-subject') || 'Website form', _template: 'table', _captcha: 'false' };
+          var nb = new URLSearchParams();
+          nb.append('form-name', f.getAttribute('data-formname') || 'contact');
           f.querySelectorAll('input[name],select[name],textarea[name]').forEach(function(el){
-            if(el.value) payload[el.name] = el.value;
+            if(el.value) nb.append(el.name, el.value);
           });
-          fetch(NOTIFY, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-            body: JSON.stringify(payload), keepalive:true}).catch(function(){});
+          fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+            body: nb.toString(), keepalive:true}).catch(function(){});
         }
         f.reset(); toast(f.getAttribute('data-toast'));
       });
