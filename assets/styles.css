@@ -516,3 +516,7 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .legal li{margin:6px 0}
 .legal strong{color:var(--deep)}
 .legal a{color:var(--teal-d);font-weight:600}
+
+/* City "where to ride" grid: 4 across desktop, 2x2 on tablet/mobile */
+.simplegrid.rides-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.simplegrid.rides-grid{grid-template-columns:1fr 1fr;gap:14px}}
