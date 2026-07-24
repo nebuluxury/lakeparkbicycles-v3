@@ -117,6 +117,10 @@
     <p class="wsub">Tap send and it comes straight to us; we'll be in touch within the hour to confirm your window (Mon-Sat, 9-4).</p>
     <div class="rvw" id="rvw"></div>
     <div class="wtotal"><div><div class="lab" id="t-lab">Total incl. 7% tax</div></div><div class="amt" id="t-amt">$0</div></div>
+    <form name="tuneup" method="POST" data-netlify="true" action="/thanks.html" id="nf-tuneup" style="display:none">
+      <input type="hidden" name="form-name" value="tuneup">
+      <input type="hidden" name="the_package"><input type="hidden" name="pickup"><input type="hidden" name="address"><input type="hidden" name="day"><input type="hidden" name="name"><input type="hidden" name="phone"><input type="hidden" name="email"><input type="hidden" name="total">
+    </form>
     <div class="wnext"><a class="btn btn-coral btn-lg" id="sendBtn" href="#">Send my booking &rarr;</a></div>
     <p id="sentMsg" style="display:none;max-width:520px;margin:18px auto 0;background:var(--teal-soft);border:1px solid rgba(18,163,160,.35);border-radius:14px;padding:16px 20px;text-align:center;color:var(--teal-d);font-weight:600;font-size:15px">&#10003; Got it! Your booking is in - we'll be in touch within the hour to confirm your window (Mon-Sat, 9-4).</p>
     <p class="wedit">Prefer to talk? Call <a href="tel:+15618420303" style="color:var(--teal-d);font-weight:600">561-842-0303</a>. You'll sign a quick service agreement at handoff.</p>
@@ -209,20 +213,16 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
   if(!c.anyBike||!md||!document.getElementById('f-date').value||!document.getElementById('f-window').value||(md==='deliver'&&!document.getElementById('f-address').value.trim())||!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim()){
     alert('Almost there - add your bikes + packages, pickup method, a day and window, and your name and phone.');return;}
   var btn=this;btn.textContent='Sending...';btn.style.pointerEvents='none';
-  var nb=new URLSearchParams();
-  nb.append('form-name','tuneup');
-  nb.append('the_package',bikeSummary());
-  nb.append('pickup',md==='shop'?'Shop drop-off (free)':('We pick up'+(c.freeDel?' - FREE (service over $129)':' - $25')));
-  nb.append('address',md==='deliver'?document.getElementById('f-address').value.trim():'(shop drop-off)');
-  nb.append('day',fmtDate(document.getElementById('f-date').value)+' '+document.getElementById('f-window').value);
-  nb.append('name',document.getElementById('f-name').value.trim());
-  nb.append('phone',document.getElementById('f-phone').value.trim());
-  nb.append('email',document.getElementById('f-email').value.trim()||'(none)');
-  nb.append('total',money(c.total)+(c.hasEst?'+ (estimate)':'')+' incl 7% tax');
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:nb.toString()}).then(function(r){
-    if(r.ok){btn.textContent='✓ Booking sent!';btn.style.opacity='.65';var m=document.getElementById('sentMsg');m.style.display='block';m.scrollIntoView({behavior:'smooth',block:'center'});}
-    else{throw new Error('fail');}
-  }).catch(function(){btn.textContent='Send my booking →';btn.style.pointerEvents='auto';alert('That did not go through - please call us at 561-842-0303 and we will book you right away.');});
+  var f=document.getElementById('nf-tuneup');
+  f.elements['the_package'].value=bikeSummary();
+  f.elements['pickup'].value=(md==='shop'?'Shop drop-off (free)':('We pick up'+(c.freeDel?' - FREE (service over $129)':' - $25')));
+  f.elements['address'].value=(md==='deliver'?document.getElementById('f-address').value.trim():'(shop drop-off)');
+  f.elements['day'].value=fmtDate(document.getElementById('f-date').value)+' '+document.getElementById('f-window').value;
+  f.elements['name'].value=document.getElementById('f-name').value.trim();
+  f.elements['phone'].value=document.getElementById('f-phone').value.trim();
+  f.elements['email'].value=document.getElementById('f-email').value.trim()||'(none)';
+  f.elements['total'].value=money(c.total)+(c.hasEst?'+ (estimate)':'')+' incl 7% tax';
+  f.submit();
 });
 (function(){
   var d=document.getElementById('f-date');if(d){d.min=new Date().toISOString().split('T')[0];
@@ -235,7 +235,8 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
     <div class="foot-top">
       <div><h2>The shop is getting <em>a makeover.</em></h2>
         <p>Lake Park Bicycles is being reimagined top to bottom. Until the doors reopen in style, we come to you - tune-ups and rentals, picked up and delivered. Join the list and be first to hear about the grand reopening.</p></div>
-      <form data-notify="1" data-formname="newsletter" data-subject="Reopening list signup" data-toast="You're on the list - see you at the reopening">
+      <form name="newsletter" method="POST" data-netlify="true" action="/thanks.html">
+        <input type="hidden" name="form-name" value="newsletter">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <button class="btn btn-teal" type="submit">Join &rarr;</button>
       </form>
