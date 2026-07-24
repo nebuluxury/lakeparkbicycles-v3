@@ -420,3 +420,21 @@ footer.site{background:var(--deep);color:#cfe0e6}
 /* symptom cards */
 .sym .n{color:var(--coral)}
 @media(max-width:720px){.membwrap,.membincl ul{grid-template-columns:1fr}}
+
+/* homepage hero: keep the two buttons side by side + tidy badges on mobile */
+@media(max-width:600px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:20px}
+  .hero-grid>div{min-width:0;max-width:100%;overflow:hidden}
+  .hero-media{max-width:100%!important;justify-self:stretch}
+  .hero-media .photo,.hero-media img{width:100%!important;max-width:100%!important}
+  .hero .lead{max-width:100%!important}
+  .hero .acts{flex-wrap:nowrap;gap:10px}
+  .hero .acts .btn{flex:1 1 0;min-width:0;justify-content:center;padding:15px 6px;font-size:13px;white-space:nowrap}
+  .hero-badges{flex-direction:column;gap:11px;margin-top:28px}
+  .hero-badges .hb{font-size:14px}
+}
+
+/* align plan/package card buttons to the bottom so they line up across cards */
+.plan{display:flex;flex-direction:column}
+.plan ul{flex:1 0 auto}
+.plan .btn{margin-top:auto}

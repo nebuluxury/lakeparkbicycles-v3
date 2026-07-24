@@ -16,10 +16,10 @@
 <link rel="stylesheet" href="assets/styles.css?v=9">
 </head>
 <body>
-<div class="ticker"><div class="ticker-track"><span class="grp"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Doorstep Tune-Ups from $99</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free pickup &amp; delivery</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span><span class="grp" aria-hidden="true"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Doorstep Tune-Ups from $99</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free pickup &amp; delivery</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span></div></div>
+<div class="ticker"><div class="ticker-track"><span class="grp"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Doorstep Tune-Ups from $99</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span><span class="grp" aria-hidden="true"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Doorstep Tune-Ups from $99</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span></div></div>
 <header class="site"><div class="headbar">
     <a href="index.html" class="brand" aria-label="Lake Park Bicycles home"><img src="assets/img/logo-badge.png" alt="Lake Park Bicycles - Established 1975" width="54" height="54" style="border-radius:50%;flex:0 0 auto">
-      <span class="word">Lake Park Bicycles<small>North Palm Beach &middot; Est. 1975</small></span>
+      <span class="word">Lake Park Bicycles<small>Est. 1975</small></span>
     </a>
     <nav class="main" id="mainnav"><a href="tune-up.html">$99 Tune-Up</a><a href="service.html">Service</a><a href="rentals.html" class="active">Rentals</a><a href="about.html">Meet Tony</a><a href="contact.html">Visit</a></nav>
     <a href="contact.html" class="btn btn-coral" style="padding:11px 20px;font-size:13px">Book my pickup</a>
@@ -129,7 +129,7 @@
 
   <div class="wpanel" id="wp3">
     <h2 class="wq">3. Let's schedule your delivery.</h2>
-    <p class="wsub">Delivery and pickup is free on rentals of 3 days or more, otherwise a flat $19. Shop pickup is always free.</p>
+    <p class="wsub">Delivery and pickup is free on rentals of 3 days or more, otherwise a flat $25. Shop pickup is always free.</p>
     <div class="optrow" style="grid-template-columns:1fr 1fr">
       <div class="optcard" id="m-deliver" onclick="mode('deliver')"><img class="vanimg" src="assets/img/ill-van.png" alt=""><div class="t">Deliver to me</div><div class="d">Hotel, condo or home - Jupiter to Lake Park</div></div>
       <div class="optcard" id="m-shop" onclick="mode('shop')"><img class="vanimg" src="assets/img/logo-badge.png" alt="" style="border-radius:50%"><div class="t">Shop pickup - free</div><div class="d">910 Northlake Blvd, North Palm Beach</div></div>
@@ -186,7 +186,7 @@ function calc(){
   });
   var delFee=0,delLab='(choose above)';
   if(S.mode==='shop')delLab='Shop pickup - free';
-  if(S.mode==='deliver'){if(n>0&&n<3){delFee=19;delLab='Delivery + pickup';}else{delLab='Delivery + pickup - free (3+ days)';}}
+  if(S.mode==='deliver'){if(n>0&&n<3){delFee=25;delLab='Delivery + pickup';}else{delLab='Delivery + pickup - free (3+ days)';}}
   var tax=quoted?0:(sub+delFee)*TAX;
   return {n:n,quoted:quoted,sub:sub,items:items,delFee:delFee,delLab:delLab,tax:tax,grand:sub+delFee+tax,anyBike:anyBike};
 }
