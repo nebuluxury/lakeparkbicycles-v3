@@ -441,3 +441,14 @@ footer.site{background:var(--deep);color:#cfe0e6}
 
 /* $99 band header row: drop the right-side label on small screens so it never clips */
 @media(max-width:640px){.service-top .row span.fill,.service-top .row span:last-child{display:none}}
+
+/* mobile: keep the service card grids two-up (shorter than a single tall column) */
+@media(max-width:720px){
+  .simplegrid{grid-template-columns:1fr 1fr;gap:12px}
+  .simplegrid .scard{padding:16px 14px}
+  .simplegrid .scard .d{font-size:12.5px;line-height:1.5}
+  .simplegrid .scard .n{font-size:17px}
+}
+
+/* defensive: never let interior-hero lead text run past the phone edge */
+@media(max-width:720px){.page-hero .lead{max-width:100%}}
