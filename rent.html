@@ -26,7 +26,6 @@
     <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div></header>
 
-
 <style>
 .wiz{max-width:860px;margin:0 auto;padding:46px 28px 96px}
 .wizsteps{display:flex;gap:8px;justify-content:center;margin-bottom:10px}
@@ -290,8 +289,7 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
   });
   if(location.hash==='#all'){[2,3,4].forEach(function(n){document.getElementById('wp'+n).classList.add('on');var b=document.getElementById('nb'+(n-1));if(b)b.style.display='none';var sb=document.getElementById('sb'+n);if(sb)sb.classList.add('on');});build();}
 })();
-</script>
-<footer class="site"><div class="foot">
+</script><footer class="site"><div class="foot">
     <div class="foot-top">
       <div><h2>The shop is getting <em>a makeover.</em></h2>
         <p>Lake Park Bicycles is being reimagined top to bottom. Until the doors reopen in style, we come to you - tune-ups and rentals, picked up and delivered. Join the list and be first to hear about the grand reopening.</p></div>
