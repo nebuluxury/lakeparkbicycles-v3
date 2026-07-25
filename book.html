@@ -11,14 +11,14 @@
   gtag('js', new Date());
   gtag('config', 'G-RER3R64TQR');
 </script>
-<title>Book a Tune-Up - Lake Park Bicycles</title>
-<meta name="description" content="Book your doorstep bike tune-ups: add each bike with its own package (Safety Check $99, Full Tune-Up $129, Signature Overhaul $199), choose pickup or shop drop-off, and see your total with tax. Free pickup and delivery once your service reaches $129.">
+<title>Book a Service or Repair - Lake Park Bicycles</title>
+<meta name="description" content="Book doorstep bike service: a tune-up (Safety Check $99, Full Tune-Up $129, Overhaul $199) or any repair - flats, brakes, gears, wheels, e-bikes. Pickup and delivery, free once your ticket reaches $129.">
 <meta name="theme-color" content="#12a3a0">
 <link rel="canonical" href="https://www.lakeparkbicycles.com/book">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<meta property="og:title" content="Book a Tune-Up - Lake Park Bicycles">
-<meta property="og:description" content="Book your doorstep bike tune-ups: add each bike with its own package (Safety Check $99, Full Tune-Up $129, Signature Overhaul $199), choose pickup or shop drop-off, and see your total with tax. Free pickup and delivery once your service reaches $129.">
+<meta property="og:title" content="Book a Service or Repair - Lake Park Bicycles">
+<meta property="og:description" content="Book doorstep bike service: a tune-up (Safety Check $99, Full Tune-Up $129, Overhaul $199) or any repair - flats, brakes, gears, wheels, e-bikes. Pickup and delivery, free once your ticket reaches $129.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/service-hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -56,6 +56,9 @@
 .pkgpill b{display:block;color:var(--teal-d);font-weight:700;margin-top:3px;font-size:14px}
 .pkgpill:hover{border-color:var(--line-2)}
 .pkgpill.sel{border-color:var(--teal);background:var(--teal-soft)}
+.otherbox{display:grid;gap:10px;margin-top:12px}
+.otherbox select,.otherbox input{background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:11px 14px;color:var(--deep);font-family:inherit;font-size:14px;outline:none;width:100%}
+.otherbox select:focus,.otherbox input:focus{border-color:var(--teal)}
 .addbike{background:none;border:2px dashed var(--line-2);border-radius:12px;padding:12px 22px;color:var(--teal-d);font-weight:600;font-family:inherit;font-size:14.5px;cursor:pointer}
 .addbike:hover{border-color:var(--teal);background:var(--teal-soft)}
 .freehint{max-width:580px;margin:20px auto 0;text-align:center;font-size:14px;padding:13px 18px;border-radius:12px;background:var(--sand-2);color:var(--slate);display:none}
@@ -87,16 +90,19 @@
 @media(max-width:560px){.pkgpills{grid-template-columns:1fr 1fr}.optrow{grid-template-columns:1fr}}
 </style>
 <section class="page-hero" style="padding-bottom:16px"><div class="in">
-  <div class="crumb" data-reveal><a href="/">Home</a> / <a href="/tune-up">$99 Tune-Up</a> / Book</div>
-  <h1 data-reveal style="text-align:center">Book your <em>tune-up.</em></h1>
-  <p class="lead" data-reveal style="text-align:center;max-width:580px;margin:14px auto 0">Add each bike and tell us what it needs - mix and match packages. Your total and delivery update as you go. Pickups run Mon-Sat, 9 to 4.</p>
+  <div class="crumb" data-reveal><a href="/">Home</a> / Book</div>
+  <h1 data-reveal style="text-align:center">Book your <em>service.</em></h1>
+  <p class="lead" data-reveal style="text-align:center;max-width:600px;margin:14px auto 0">Tune-up, repair, or a quick fix - add each bike, tell us what it needs, and we come get it. Your total and delivery update as you go. Pickups run Mon-Sat, 9 to 4.</p>
 </div></section>
+<div style="max-width:1000px;margin:4px auto 0;padding:0 28px" data-reveal>
+  <img src="assets/img/service-mechanic.png" alt="A Lake Park Bicycles mechanic servicing a bike on the repair stand" style="width:100%;height:min(32vh,290px);object-fit:cover;border-radius:20px;box-shadow:var(--shadow)">
+</div>
 <div class="wiz">
   <div class="wizsteps"><i class="on"></i><i id="sb2"></i><i id="sb3"></i></div>
 
   <div class="wpanel on" id="wp1">
     <h2 class="wq">1. Your bikes</h2>
-    <p class="wsub">One bike or the whole family - add as many as you need, each with its own package. Not sure which? Pick "Not sure" and we'll recommend when we see it.</p>
+    <p class="wsub">Pick a tune-up - <strong>good, better or best</strong> - or choose <strong>Other</strong> for a specific repair. Add as many bikes as you like, each with its own service.</p>
     <div id="bikelist"></div>
     <div style="text-align:center;margin-top:6px"><button type="button" class="addbike" onclick="addBike()">+ Add another bike</button></div>
     <div class="freehint" id="freehint"></div>
@@ -136,10 +142,11 @@
   </div>
 </div>
 <script>
-var bikes=[{pkg:null}];
+var bikes=[{pkg:null,otype:'',onote:''}];
 var md=null;
-var PKG={safety:{n:'Safety Check',p:99},full:{n:'Full Tune-Up',p:129},overhaul:{n:'Signature Overhaul',p:199},unsure:{n:'Not sure',p:99,est:true}};
-var OPTS=[['safety','Safety Check','$99'],['full','Full Tune-Up','$129'],['overhaul','Overhaul','$199'],['unsure','Not sure','']];
+var PKG={safety:{n:'Safety Check',p:99},full:{n:'Full Tune-Up',p:129},overhaul:{n:'Signature Overhaul',p:199},other:{n:'Other / repair',p:0,est:true}};
+var OPTS=[['safety','Safety Check','$99'],['full','Full Tune-Up','$129'],['overhaul','Overhaul','$199'],['other','Other / repair','']];
+var REPAIRS=['Flat / tube replacement','Brake repair or adjustment','Gears / shifting problem','Wheel truing (wobble)','New tire(s)','Chain replacement','Bearing / hub / bottom bracket','E-bike diagnostic','Assembly (boxed bike)','Not sure - please take a look','Something else'];
 function money(x){return '$'+(Math.round(x*100)/100).toFixed(2).replace(/\.00$/,'');}
 function fmtDate(v){if(!v)return '';var d=new Date(v+'T12:00:00');return d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}
 function renderBikes(){
@@ -147,16 +154,24 @@ function renderBikes(){
   bikes.forEach(function(b,i){
     h+='<div class="bikecard"><div class="bikehd"><span class="bikelabel">Bike '+(i+1)+'</span>'+(bikes.length>1?'<button type="button" class="bikerm" onclick="removeBike('+i+')">Remove</button>':'')+'</div><div class="pkgpills">';
     OPTS.forEach(function(o){h+='<button type="button" class="pkgpill'+(b.pkg===o[0]?' sel':'')+'" onclick="setPkg('+i+',\''+o[0]+'\')">'+o[1]+(o[2]?' <b>'+o[2]+'</b>':'')+'</button>';});
-    h+='</div></div>';
+    h+='</div>';
+    if(b.pkg==='other'){
+      var opts='<option value="">What does it need?</option>';
+      REPAIRS.forEach(function(r){opts+='<option'+(b.otype===r?' selected':'')+'>'+r+'</option>';});
+      h+='<div class="otherbox"><select onchange="setOther('+i+',this.value)">'+opts+'</select><input type="text" placeholder="Tell us more (optional)" value="'+(b.onote||'').replace(/"/g,'&quot;')+'" oninput="setNote('+i+',this.value)"></div>';
+    }
+    h+='</div>';
   });
   el.innerHTML=h;updateHints();
 }
-function addBike(){bikes.push({pkg:null});renderBikes();}
+function addBike(){bikes.push({pkg:null,otype:'',onote:''});renderBikes();}
 function removeBike(i){bikes.splice(i,1);renderBikes();refresh();}
 function setPkg(i,k){bikes[i].pkg=k;renderBikes();refresh();}
+function setOther(i,v){bikes[i].otype=v;refresh();}
+function setNote(i,v){bikes[i].onote=v;refresh();}
 function calc(){
   var sub=0,anyBike=false,hasEst=false,items=[];
-  bikes.forEach(function(b,i){if(b.pkg){anyBike=true;var P=PKG[b.pkg];sub+=P.p;if(P.est)hasEst=true;items.push({i:i,n:P.n,p:P.p,est:!!P.est});}});
+  bikes.forEach(function(b,i){if(b.pkg){anyBike=true;var P=PKG[b.pkg];sub+=P.p;if(P.est)hasEst=true;items.push({i:i,n:P.n,p:P.p,est:!!P.est,ot:b.otype,on:b.onote});}});
   var freeDel=sub>=129;
   var fee=(md==='deliver')?(freeDel?0:25):0;
   var tax=(sub+fee)*0.07;
@@ -167,6 +182,7 @@ function updateHints(){
   if(!c.anyBike){fh.style.display='none';return;}
   fh.style.display='block';
   if(c.sub>=129){fh.className='freehint on';fh.innerHTML='&#127881; That\'s '+money(c.sub)+' of service - <strong>free pickup &amp; delivery</strong> is on us!';}
+  else if(c.hasEst){fh.className='freehint';fh.innerHTML='We\'ll price your repair once we see the bike. Doorstep pickup is a flat $25 (free once the ticket reaches $129).';}
   else{fh.className='freehint';fh.innerHTML='You\'re at '+money(c.sub)+'. Reach $129 (another bike, or bump one to a Full Tune-Up) and <strong>pickup &amp; delivery is free</strong>.';}
 }
 function mode(v){md=v;['deliver','shop'].forEach(function(x){document.getElementById('m-'+x).classList.toggle('sel',x===v);});document.getElementById('f-address').style.display=(v==='deliver')?'block':'none';updDelText();refresh();}
@@ -176,7 +192,7 @@ function unlock(n,btn){
   if(n===2){
     var c=calc();
     if(!c.anyBike){alert('Add at least one bike and pick what it needs.');return;}
-    for(var i=0;i<bikes.length;i++){if(!bikes[i].pkg){alert('Pick a package for Bike '+(i+1)+' (or remove it).');return;}}
+    for(var i=0;i<bikes.length;i++){if(!bikes[i].pkg){alert('Pick a service for Bike '+(i+1)+' (or remove it).');return;}if(bikes[i].pkg==='other'&&!bikes[i].otype){alert('Tell us what Bike '+(i+1)+' needs - pick from the list (or "Not sure").');return;}}
   }
   if(n===3){
     if(!md){alert('Tell us - should we come get them, or will you drop them off?');return;}
@@ -191,7 +207,7 @@ function unlock(n,btn){
   refresh();setTimeout(function(){pnl.scrollIntoView({behavior:'smooth',block:'start'});},60);
 }
 function refresh(){updateHints();updDelText();if(opened(3))build();}
-function bikeSummary(){var c=calc();return c.items.map(function(it,idx){return 'Bike '+(idx+1)+': '+it.n+(it.est?' (assess)':' ('+money(it.p)+')');}).join('; ');}
+function bikeSummary(){var c=calc();return c.items.map(function(it,idx){if(it.n==='Other / repair'){return 'Bike '+(idx+1)+': Repair - '+(it.ot||'unspecified')+(it.on?' ('+it.on+')':'');}return 'Bike '+(idx+1)+': '+it.n+' ('+money(it.p)+')';}).join('; ');}
 function build(){
   var c=calc();
   var dt=document.getElementById('f-date').value,win=document.getElementById('f-window').value||'(window TBD)';
@@ -203,7 +219,7 @@ function build(){
   h+='<div class="row"><b>Day</b><span>'+(dt?fmtDate(dt):'(TBD)')+' &middot; '+win+'</span></div>';
   h+='<div class="row"><b>Contact</b><span>'+(nm?nm+' &middot; ':'')+ph+(em?' &middot; '+em:'')+'</span></div>';
   h+='<div class="bh">The math</div>';
-  c.items.forEach(function(it,idx){h+='<div class="row"><b>Bike '+(idx+1)+' &middot; '+it.n+'</b><span>'+(it.est?'we assess ($99+)':money(it.p))+'</span></div>';});
+  c.items.forEach(function(it,idx){var lab=(it.n==='Other / repair'&&it.ot)?('Repair: '+it.ot):it.n;h+='<div class="row"><b>Bike '+(idx+1)+' &middot; '+lab+'</b><span>'+(it.est?'we quote it':money(it.p))+'</span></div>';});
   if(md==='deliver'){
     if(c.freeDel){h+='<div class="row free"><b>Pickup + delivery</b><span><s>$25</s> FREE &#127881;</span></div>';}
     else{h+='<div class="row"><b>Pickup + delivery</b><span>$25</span></div>';}
