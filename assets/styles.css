@@ -520,3 +520,20 @@ footer.site{background:var(--deep);color:#cfe0e6}
 /* City "where to ride" grid: 4 across desktop, 2x2 on tablet/mobile */
 .simplegrid.rides-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:820px){.simplegrid.rides-grid{grid-template-columns:1fr 1fr;gap:14px}}
+
+/* ===== Tony's Tips ===== */
+.tonytip{display:flex;gap:22px;align-items:flex-start;max-width:860px;margin:0 auto;background:var(--sand-2);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:18px;padding:24px 28px}
+.tonytip img{width:66px;height:66px;border-radius:50%;object-fit:cover;object-position:center top;flex:0 0 auto}
+.tonytip .lab{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--coral)}
+.tonytip .tt{font-family:"Fraunces",serif;font-weight:600;font-size:19px;color:var(--deep);margin:3px 0 7px;line-height:1.2}
+.tonytip .tb{color:var(--slate);font-size:15px;line-height:1.62}
+.tonytip-feat{background:var(--teal-soft);border-left-color:var(--teal);padding:30px 32px}
+.tonytip-feat img{width:82px;height:82px}
+.tonytip-feat .tt{font-size:22px}
+.tiplib{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tipcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow-s)}
+.tipcard .tc-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--coral);margin-bottom:6px}
+.tipcard .tc-t{font-family:"Fraunces",serif;font-weight:600;font-size:18px;color:var(--deep);margin-bottom:8px;line-height:1.22}
+.tipcard .tc-b{color:var(--slate);font-size:14.5px;line-height:1.6}
+@media(max-width:860px){.tiplib{grid-template-columns:1fr 1fr}.tonytip{flex-direction:column}}
+@media(max-width:560px){.tiplib{grid-template-columns:1fr}}
