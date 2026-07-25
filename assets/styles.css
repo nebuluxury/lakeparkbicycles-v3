@@ -489,7 +489,7 @@ footer.site{background:var(--deep);color:#cfe0e6}
 }
 
 /* ===== Structured footer ===== */
-.foot-cols{display:grid;grid-template-columns:1.7fr 1fr 1.25fr 1fr;gap:40px;padding:48px 0 8px}
+.foot-cols{display:grid;grid-template-columns:1.5fr 1fr 1.3fr 1fr 1fr;gap:34px;padding:48px 0 8px}
 .fcol h4{font-family:"Fraunces",serif;font-weight:600;font-size:15px;color:#fff;margin:0 0 14px;letter-spacing:.01em}
 .fcol a{display:block;color:#a9c3cc;font-size:14px;line-height:1.25;padding:7px 0;width:fit-content;transition:color .2s ease}
 .fcol a:hover{color:#fff}
