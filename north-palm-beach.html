@@ -22,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/cat-city.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=17"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Mobile bike repair, tune-ups and bike rental delivery","name":"Bike repair and bike rental in North Palm Beach","provider":{"@type":"BikeStore","name":"Lake Park Bicycles","image":"https://www.lakeparkbicycles.com/assets/img/logo-badge.png","telephone":"+1-561-842-0303","url":"https://www.lakeparkbicycles.com/","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"910 Northlake Blvd","addressLocality":"North Palm Beach","addressRegion":"FL","postalCode":"33408","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":26.8106,"longitude":-80.0710}},"areaServed":{"@type":"City","name":"North Palm Beach, Florida"},"url":"https://www.lakeparkbicycles.com/north-palm-beach.html"}</script>
+<link rel="stylesheet" href="assets/styles.css?v=18"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Mobile bike repair, tune-ups and bike rental delivery","name":"Bike repair and bike rental in North Palm Beach","provider":{"@type":"BikeStore","name":"Lake Park Bicycles","image":"https://www.lakeparkbicycles.com/assets/img/logo-badge.png","telephone":"+1-561-842-0303","url":"https://www.lakeparkbicycles.com/","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"910 Northlake Blvd","addressLocality":"North Palm Beach","addressRegion":"FL","postalCode":"33408","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":26.8106,"longitude":-80.0710}},"areaServed":{"@type":"City","name":"North Palm Beach, Florida"},"url":"https://www.lakeparkbicycles.com/north-palm-beach.html"}</script>
 </head>
 <body>
 <div class="ticker"><div class="ticker-track"><span class="grp"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Summer Sale &middot; $129 Full Tune-Up (reg $169)</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span><span class="grp" aria-hidden="true"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Summer Sale &middot; $129 Full Tune-Up (reg $169)</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span></div></div>
@@ -48,6 +48,33 @@
   <span class="lbl">Doorstep service across</span>
   <span class="town">Old Port Cove, Lost Tree, the Country Club village &amp; Anchorage Park</span>
 </div></section>
+
+
+<section class="section" style="padding-top:38px;padding-bottom:0">
+  <div class="rideweather" id="rwCard" style="display:none">
+    <div class="rw-now"><div class="rw-label">Right now in North Palm Beach</div>
+      <div class="rw-temprow"><span class="rw-temp" id="rwTemp">--&deg;</span><span class="rw-cond" id="rwCond"></span></div></div>
+    <div class="rw-air"><span class="rw-dot" id="rwDot"></span><div class="rw-airtxt"><span class="rw-airlab">Air quality</span><span id="rwAqi">--</span></div></div>
+    <div class="rw-verdict" id="rwVerdict"></div>
+  </div>
+</section>
+<script>
+(function(){var LAT=26.8176,LNG=-80.0581,K="AIzaSyDiVe3XM2xLD2TY-JGQP4tu9RduPyYKFWI",NM="North Palm Beach";
+var card=document.getElementById("rwCard");if(!card){return;}
+fetch("https://weather.googleapis.com/v1/currentConditions:lookup?key="+K+"&location.latitude="+LAT+"&location.longitude="+LNG+"&unitsSystem=IMPERIAL").then(function(r){return r.json();}).then(function(w){
+if(!w||!w.temperature){return;}
+var t=Math.round(w.temperature.degrees);var c=(w.weatherCondition&&w.weatherCondition.description&&w.weatherCondition.description.text)||"";var ty=(w.weatherCondition&&w.weatherCondition.type)||"";
+document.getElementById("rwTemp").innerHTML=t+"&deg;";document.getElementById("rwCond").textContent=c;card.style.display="";
+var v,rain=/RAIN|THUNDERSTORM|SHOWER|HAIL|SNOW/.test(ty)||/rain|storm|shower|thunder/i.test(c);
+if(rain){v="\u2614 Wet out there - maybe grab that bike tomorrow.";}else if(t>=92){v="\u2600\uFE0F Toasty - ride early, and bring water.";}else if(t<=55){v="\uD83E\uDDE5 Cool for Florida - layer up and roll.";}else{v="\uD83D\uDEB2 Great day to ride "+NM+".";}
+document.getElementById("rwVerdict").textContent=v;
+fetch("https://airquality.googleapis.com/v1/currentConditions:lookup?key="+K,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({location:{latitude:LAT,longitude:LNG}})}).then(function(r){return r.json();}).then(function(a){
+var i=a&&a.indexes&&a.indexes[0];if(!i){return;}document.getElementById("rwAqi").textContent=(i.category||"").replace(/ air quality/i,"")||"--";
+if(i.color){var cc=i.color;document.getElementById("rwDot").style.background="rgb("+Math.round((cc.red||0)*255)+","+Math.round((cc.green||0)*255)+","+Math.round((cc.blue||0)*255)+")";}}).catch(function(){});
+}).catch(function(){});
+})();
+</script>
+
 
 <section class="section" style="padding-top:76px">
   <div class="split" style="align-items:center;gap:48px">
@@ -132,6 +159,7 @@
         <a href="juno-beach.html">Juno Beach</a>
         <a href="north-palm-beach.html">North Palm Beach</a>
         <a href="lake-park.html">Lake Park</a>
+        <a href="singer-island.html">Singer Island</a>
       </div>
       <div class="fcol">
         <h4>Get rolling</h4>

@@ -550,3 +550,17 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .tips-hero .crumb{margin-bottom:12px}
 .tipcard .tc-date{font-size:11.5px;font-weight:700;letter-spacing:.05em;color:var(--teal-d);margin-bottom:8px}
 @media(max-width:860px){.tips-hero{grid-template-columns:1fr;gap:26px}}
+
+/* City "great day to ride?" weather + air widget */
+.rideweather{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;background:linear-gradient(120deg,var(--teal-soft),#eaf3ee);border:1px solid rgba(18,163,160,.25);border-radius:20px;padding:20px 28px}
+.rw-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--teal-d)}
+.rw-temprow{display:flex;align-items:baseline;gap:12px;margin-top:2px}
+.rw-temp{font-family:"Fraunces",serif;font-weight:600;font-size:38px;color:var(--deep);line-height:1}
+.rw-cond{color:var(--slate);font-size:15px}
+.rw-air{display:flex;align-items:center;gap:10px}
+.rw-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);flex:0 0 auto;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
+.rw-airtxt{display:flex;flex-direction:column;line-height:1.2}
+.rw-airlab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rw-airtxt span:last-child{color:var(--deep);font-weight:600;font-size:15px}
+.rw-verdict{margin-left:auto;font-family:"Fraunces",serif;font-weight:600;color:var(--deep);font-size:16px}
+@media(max-width:640px){.rw-verdict{margin-left:0;flex-basis:100%}.rw-temp{font-size:32px}}
