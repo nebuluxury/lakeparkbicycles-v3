@@ -537,3 +537,10 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .tipcard .tc-b{color:var(--slate);font-size:14.5px;line-height:1.6}
 @media(max-width:860px){.tiplib{grid-template-columns:1fr 1fr}.tonytip{flex-direction:column}}
 @media(max-width:560px){.tiplib{grid-template-columns:1fr}}
+
+/* ===== Address autocomplete dropdown ===== */
+.ac-wrap{position:relative}
+.ac-list{position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:60;background:#fff;border:1px solid var(--line-2);border-radius:12px;box-shadow:var(--shadow);overflow-y:auto;max-height:260px;display:none}
+.ac-item{padding:11px 16px;font-size:14px;color:var(--deep);cursor:pointer;border-bottom:1px solid var(--line);line-height:1.35}
+.ac-item:last-child{border-bottom:0}
+.ac-item:hover{background:var(--teal-soft)}

@@ -22,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/service-hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=15">
+<link rel="stylesheet" href="assets/styles.css?v=16">
 </head>
 <body>
 <div class="ticker"><div class="ticker-track"><span class="grp"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Summer Sale &middot; $129 Full Tune-Up (reg $169)</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span><span class="grp" aria-hidden="true"><span>Est. 1975 &middot; North Palm Beach</span><span class="dot">&#9670;</span><span>Summer Sale &middot; $129 Full Tune-Up (reg $169)</span><span class="dot">&#9670;</span><span>100% happy or we fix it free</span><span class="dot">&#9670;</span><span>Free delivery from $129</span><span class="dot">&#9670;</span><span>Bike &amp; e-bike rentals, delivered</span><span class="dot">&#9670;</span><span>Service &middot; Rentals &middot; Repairs</span><span class="dot">&#9670;</span></span></div></div>
@@ -113,7 +113,7 @@
     <div class="wfield">
       <input type="date" id="f-date" aria-label="Preferred day">
       <select id="f-window" aria-label="Window"><option value="" disabled selected>2-hour window (Mon-Sat)</option><option>9:00 - 11:00 am</option><option>11:00 am - 1:00 pm</option><option>1:00 - 3:00 pm</option><option>2:00 - 4:00 pm</option></select>
-      <input type="text" id="f-address" placeholder="Pickup address (home, condo, hotel)">
+      <div class="ac-wrap"><input type="text" id="f-address" placeholder="Start typing your address or hotel name" autocomplete="off"><div class="ac-list" id="f-addr-list"></div></div>
       <input type="text" id="f-name" placeholder="Your name">
       <input type="tel" id="f-phone" placeholder="Phone (to confirm your booking)">
       <input type="email" id="f-email" placeholder="Email (optional)">
@@ -240,6 +240,47 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
   renderBikes();
 })();
 </script>
+
+<script>
+function initAddrAC(){
+  var input=document.getElementById('f-address'), list=document.getElementById('f-addr-list');
+  if(!input||!list||!window.google||!google.maps||!google.maps.importLibrary){return;}
+  google.maps.importLibrary("places").then(function(P){
+    var token=null,timer=null,skip=false;
+    var bias={north:27.05,south:26.55,east:-79.90,west:-80.40};
+    function closeList(){list.innerHTML='';list.style.display='none';}
+    input.addEventListener('input',function(){
+      if(skip){skip=false;return;}
+      var q=input.value.trim();clearTimeout(timer);
+      if(q.length<3){closeList();return;}
+      timer=setTimeout(function(){
+        if(!token){token=new P.AutocompleteSessionToken();}
+        P.AutocompleteSuggestion.fetchAutocompleteSuggestions({input:q,sessionToken:token,includedRegionCodes:['us'],locationBias:bias}).then(function(res){
+          var sugs=(res&&res.suggestions)||[];list.innerHTML='';
+          sugs.slice(0,5).forEach(function(s){
+            var pred=s.placePrediction;if(!pred){return;}
+            var item=document.createElement('div');item.className='ac-item';item.textContent=pred.text.toString();
+            item.addEventListener('mousedown',function(ev){
+              ev.preventDefault();
+              var place=pred.toPlace();
+              place.fetchFields({fields:['formattedAddress','displayName']}).then(function(){
+                var v=place.formattedAddress||pred.text.toString();
+                if(place.displayName&&v.indexOf(place.displayName)===-1){v=place.displayName+', '+v;}
+                skip=true;input.value=v;input.dispatchEvent(new Event('input',{bubbles:true}));token=null;closeList();
+              }).catch(function(){input.value=pred.text.toString();token=null;closeList();});
+            });
+            list.appendChild(item);
+          });
+          list.style.display=sugs.length?'block':'none';
+        }).catch(function(){closeList();});
+      },250);
+    });
+    document.addEventListener('click',function(e){if(e.target!==input&&!list.contains(e.target)){closeList();}});
+  }).catch(function(){});
+}
+window.initAddrAC=initAddrAC;
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiVe3XM2xLD2TY-JGQP4tu9RduPyYKFWI&libraries=places&loading=async&callback=initAddrAC"></script>
 <footer class="site"><div class="foot">
     <div class="foot-top">
       <div><h2>The shop is getting <em>a makeover.</em></h2>
