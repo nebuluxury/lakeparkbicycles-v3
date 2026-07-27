@@ -1,0 +1,51 @@
+# Google disavow file for lakeparkbicycles.com
+# Property: lakeparkbicycles.com (Domain property in Google Search Console)
+# Created: 2026-07-27  |  Source: SEMrush backlink audit (toxic score 60-100)
+# Reason: unsolicited spam link networks - 'aged domains / buy backlinks / PBN' pages.
+# All entries disavowed at the domain level, which also covers www., mail. and any other subdomain.
+# Submit at: https://search.google.com/search-console/disavow-links
+#
+# 42 spam domains
+
+domain:all-aged-domains.com
+domain:allwebsitesdirectory.com
+domain:australianwebdirectory.shop
+domain:bestwebstats.com
+domain:blacksonwhites.com
+domain:cheapsmmprovider.online
+domain:domain.com.lc
+domain:domainanalysis.org
+domain:domains.com.bz
+domain:domainsc.com
+domain:gamerkun.com
+domain:getonline.co.in
+domain:globalecommerce.org
+domain:hebagh.cv
+domain:homefinance.co.in
+domain:indexaward.com
+domain:indians.cc
+domain:jobsapp.info
+domain:linksnatcher.art
+domain:linksnatcher.com
+domain:lydiaroyrealestate.com
+domain:mp3fresh.net
+domain:musweb.org
+domain:nivira.shop
+domain:pagesearch.net
+domain:plumeriamarketing.com
+domain:prashikshan.in
+domain:preparation.co.in
+domain:procycling.org
+domain:runningwebsites.net
+domain:taxies.biz
+domain:theface.in
+domain:themumbai.in
+domain:thirty.co.in
+domain:tyre.pro
+domain:tyres.pro
+domain:wallpapers.pro
+domain:way2check.art
+domain:way2check.cv
+domain:websiterace.com
+domain:websitescrawl.art
+domain:wonvision.com
