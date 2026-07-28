@@ -283,6 +283,22 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
     estimated_total:(c.quoted?'Seasonal - needs quote':money(c.grand)+' incl 7% tax')};
   var f=document.getElementById('nf-rental');
   ['bikes','dates','dropoff_window','handoff','name','phone','email','estimated_total'].forEach(function(k){f.elements[k].value=payload[k];});
+  if(window.sendToGHL){window.sendToGHL({
+    source:'website-rent',
+    service:'Rental',
+    name:payload.name,
+    phone:payload.phone,
+    email:document.getElementById('f-email').value.trim(),
+    address:(S.mode==='deliver'?document.getElementById('f-address').value.trim():'(shop pickup)'),
+    handoff:payload.handoff,
+    requested_date:a,
+    requested_end_date:b2,
+    requested_window:payload.dropoff_window,
+    bikes:payload.bikes,
+    dates:payload.dates,
+    total:payload.estimated_total,
+    message:'New rental reservation from the website.\nBikes: '+payload.bikes+'\nDates: '+payload.dates+'\nDrop-off window: '+payload.dropoff_window+'\nHandoff: '+payload.handoff+'\nEst: '+payload.estimated_total
+  });}
   f.submit();
 });
 (function(){
@@ -397,6 +413,7 @@ window.initAddrAC=initAddrAC;
       <form name="newsletter" data-netlify="true"><input type="hidden" name="form-name" value="newsletter"><input name="email"></form>
     </div>
   </div></footer>
+<script src="assets/ghl-booking.js?v=1"></script>
 <script src="assets/app.js?v=3"></script>
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a692fc6b0ee6ed3ac84f2b5"></script>
 </body>

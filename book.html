@@ -247,6 +247,21 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
   f.elements['phone'].value=document.getElementById('f-phone').value.trim();
   f.elements['email'].value=document.getElementById('f-email').value.trim()||'(none)';
   f.elements['total'].value=money(c.total)+(c.hasEst?'+ (estimate)':'')+' incl 7% tax';
+  if(window.sendToGHL){window.sendToGHL({
+    source:'website-book',
+    service:'Tune-Up / Repair',
+    name:f.elements['name'].value,
+    phone:f.elements['phone'].value,
+    email:document.getElementById('f-email').value.trim(),
+    address:f.elements['address'].value,
+    handoff:f.elements['pickup'].value,
+    requested_date:document.getElementById('f-date').value,
+    requested_window:document.getElementById('f-window').value,
+    requested_day_text:f.elements['day'].value,
+    bikes:f.elements['the_package'].value,
+    total:f.elements['total'].value,
+    message:'New tune-up / repair booking from the website.\n'+f.elements['the_package'].value+'\nHandoff: '+f.elements['pickup'].value+'\nAddress: '+f.elements['address'].value+'\nWhen: '+f.elements['day'].value+'\nTotal: '+f.elements['total'].value
+  });}
   f.submit();
 });
 (function(){
@@ -355,6 +370,7 @@ window.initAddrAC=initAddrAC;
       <form name="newsletter" data-netlify="true"><input type="hidden" name="form-name" value="newsletter"><input name="email"></form>
     </div>
   </div></footer>
+<script src="assets/ghl-booking.js?v=1"></script>
 <script src="assets/app.js?v=3"></script>
   <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a692fc6b0ee6ed3ac84f2b5"></script>
 </body>
