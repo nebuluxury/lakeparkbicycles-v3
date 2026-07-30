@@ -103,8 +103,13 @@
     <div class="foot-top">
       <div><h2>Keep the Palm Beaches <em>rolling.</em></h2>
         <p>Fifty years and still your neighborhood bike shop. Stop in, or let us come to you - doorstep tune-ups and bike rentals delivered from Jupiter to Lake Park. Join the list for seasonal specials, new arrivals and Tony's tips.</p></div>
-      <form name="newsletter" method="POST" data-netlify="true" action="/thanks">
+      <form name="newsletter" method="POST" data-netlify="true" action="https://api.web3forms.com/submit">
         <input type="hidden" name="form-name" value="newsletter">
+        <input type="hidden" name="access_key" value="dfacc1b4-52f3-4b47-bc9c-bbd01c81fdc1">
+        <input type="hidden" name="subject" value="New Reopening-List Signup - Lake Park Bicycles">
+        <input type="hidden" name="from_name" value="Lake Park Bicycles Website">
+        <input type="hidden" name="redirect" value="https://lakeparkbicycles.com/thanks">
+        <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <button class="btn btn-teal" type="submit">Join &rarr;</button>
       </form>
