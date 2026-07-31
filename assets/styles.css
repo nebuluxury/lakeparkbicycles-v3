@@ -189,13 +189,14 @@ nav.main a.active{color:var(--teal)}
 .mediaframe img{width:100%;height:100%;object-fit:cover}
 
 /* value cards */
-.valgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.valcard{background:var(--shell);border:1px solid var(--line);border-radius:18px;padding:30px 26px;box-shadow:var(--shadow-s);transition:transform .3s var(--ease),box-shadow .3s ease}
+.valgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.valcard{background:var(--shell);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-s);transition:transform .3s var(--ease),box-shadow .3s ease;display:flex;flex-direction:column}
 .valcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.valcard .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:var(--teal-soft);margin-bottom:16px}
-.valcard .ic.coral{background:#ffe3d9}.valcard .ic.sun{background:#fff0d0}
-.valcard h3{font-size:21px;margin-bottom:8px}
-.valcard p{font-size:14.5px;color:var(--slate);line-height:1.6;margin:0}
+.vc-banner{height:112px;overflow:hidden;background:#e9f0f0}
+.vc-banner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.vc-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
+.valcard h3{font-size:20px;margin-bottom:8px}
+.valcard p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
 
 /* visit + map */
 .visit{background:var(--sand-2)}
@@ -359,7 +360,7 @@ footer.site{background:var(--deep);color:#cfe0e6}
   .service-grid,.visit-grid,.foot-top,.split{grid-template-columns:1fr;gap:36px}
   .tiles{grid-template-columns:1fr 1fr}
   .pgrid,.pgrid.three{grid-template-columns:1fr 1fr}
-  .valgrid{grid-template-columns:1fr}
+  .valgrid{grid-template-columns:1fr 1fr}
   .plans,.specs{grid-template-columns:1fr}
   .simplegrid{grid-template-columns:1fr 1fr}
   .pdp{grid-template-columns:1fr;gap:28px}

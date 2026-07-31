@@ -143,7 +143,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=21">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=22">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -330,11 +330,12 @@ def build_index():
 
 <section class="section" style="padding-top:88px">
   <div class="eyebrow center" data-reveal style="justify-content:center"><span>What we do</span></div>
-  <h2 class="h2" data-reveal style="text-align:center;max-width:720px;margin:0 auto 48px">Three things, done right.</h2>
+  <h2 class="h2" data-reveal style="text-align:center;max-width:720px;margin:0 auto 48px">Four things, done right.</h2>
   <div class="valgrid">
-    <div class="valcard" data-reveal><div class="ic coral">{ICON['wrench']}</div><h3>Tune-ups &amp; repairs</h3><p>Our most-popular Full Tune-Up is $129 this summer (regularly $169), delivered free - or a quick Safety Check for $99. Need a specific repair instead? Any make, any age, we handle it too. We come to you, fix it on our bench, and bring it back within 72 hours - 100% happy or we fix it free.</p></div>
-    <div class="valcard" data-reveal><div class="ic">{ICON['truck']}</div><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p></div>
-    <div class="valcard" data-reveal><div class="ic sun">{ICON['tag']}</div><h3>Bikes for the whole family</h3><p>A full line of Retrospec bikes - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price: we are not here to sell you a $1,000 road bike, just the right bike for your family, set up right. <a href="new-bikes.html">See the lineup &rarr;</a></p></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p></div></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p></div></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right. <a href="new-bikes.html">See the lineup &rarr;</a></p></div></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="An e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Tony is a bicycle mechanic first, so we keep e-bikes honest: all the mechanical work, a $20 battery evaluation, and a $75 electrical diagnostic. We will install the battery or controller you supply - we just do not chase down proprietary parts.</p></div></div>
   </div>
 </section>
 
