@@ -151,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=25">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=26">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -342,10 +342,10 @@ def build_index():
   <div class="eyebrow center" data-reveal style="justify-content:center"><span>What we do</span></div>
   <h2 class="h2" data-reveal style="text-align:center;max-width:720px;margin:0 auto 48px">Four things, done right.</h2>
   <div class="valgrid">
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p></div></div>
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p></div></div>
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right. <a href="new-bikes.html">See the lineup &rarr;</a></p></div></div>
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind. <a href="ebikes.html">See the e-bikes &rarr;</a></p></div></div>
+    <a class="valcard" href="service.html" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p><span class="cardlink">See our services &rarr;</span></div></a>
+    <a class="valcard" href="rentals.html" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p><span class="cardlink">See rentals &rarr;</span></div></a>
+    <a class="valcard" href="new-bikes.html" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right.</p><span class="cardlink">See the lineup &rarr;</span></div></a>
+    <a class="valcard" href="ebikes.html" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind.</p><span class="cardlink">See the e-bikes &rarr;</span></div></a>
   </div>
 </section>
 

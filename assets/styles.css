@@ -646,3 +646,7 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .reserve-banner{background:var(--teal-soft);border:1px solid var(--teal);color:var(--deep);border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:14.5px}
 .reserve-banner strong{color:var(--teal-d)}
 @media(max-width:900px){.pdp{grid-template-columns:1fr;gap:24px}.pdp-gallery{position:static}}
+
+/* clickable home value cards */
+.cardlink{margin-top:auto;padding-top:14px;font-family:"Poppins",sans-serif;font-weight:700;font-size:13px;color:var(--coral-d)}
+.valcard:hover .cardlink{color:var(--coral)}
