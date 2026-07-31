@@ -607,3 +607,42 @@ footer.site{background:var(--deep);color:#cfe0e6}
 
 /* hero bento - phones */
 @media(max-width:560px){.hero-bento{grid-template-rows:148px 148px;gap:10px}.hero-pill{left:-10px}}
+
+/* ===== E-bike product pages ===== */
+.pdp{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+.pdp-gallery{position:sticky;top:96px}
+.pdp-main{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:16px}
+.pdp-main img{max-width:100%;max-height:100%;object-fit:contain}
+.pdp-thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pdp-thumbs img{width:70px;height:70px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;cursor:pointer;transition:border-color .2s}
+.pdp-thumbs img:hover,.pdp-thumbs img.on{border-color:var(--teal)}
+.stockbadge{display:inline-block;background:var(--teal-soft);color:var(--teal-d);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:99px;margin-bottom:14px}
+.pdp-info h1{font-size:clamp(30px,4vw,44px);margin:0}
+.pdp-tag{color:var(--slate);font-size:16.5px;line-height:1.55;margin:12px 0 0}
+.pdp-price{margin:22px 0 0;background:var(--sand);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.pp-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pp-num{font-family:"Fraunces",serif;font-weight:700;color:var(--deep);font-size:34px;line-height:1}
+.pp-lbl{color:var(--slate);font-size:14px;font-weight:600}
+.pp-note{color:var(--slate);font-size:13.5px;line-height:1.55;margin:10px 0 0}
+.pp-note strong{color:var(--coral-d)}
+.pdp-colors{margin:16px 0 0;font-size:14px;color:var(--slate)}
+.pdp-colors span{font-weight:700;color:var(--deep);margin-right:8px}
+.pdp-acts{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 0}
+.pdp-assure{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:9px}
+.pdp-assure li{position:relative;padding-left:26px;color:var(--slate);font-size:14.5px}
+.pdp-assure li:before{content:"\2713";position:absolute;left:0;color:var(--teal-d);font-weight:800}
+.spectable{background:var(--shell);border:1px solid var(--line);border-radius:18px;padding:6px 22px 18px;box-shadow:var(--shadow-s)}
+.spectable h3{font-family:"Poppins",sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 4px}
+.spectable table{width:100%;border-collapse:collapse}
+.spectable td{padding:10px 0;border-top:1px solid var(--line);font-size:14px;vertical-align:top}
+.spectable tr:first-child td{border-top:none}
+.spectable td:first-child{color:var(--muted);width:42%;padding-right:14px}
+.spectable td:last-child{color:var(--deep);font-weight:600}
+.spec-note{color:var(--faint);font-size:12px;margin:14px 0 0}
+.ebike-card{position:relative;text-decoration:none}
+.ebike-card .ph{position:relative}
+.stock-ov{position:absolute;top:10px;left:10px;z-index:2;background:var(--teal);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.ebike-card .reserve-link{margin-top:11px;font-family:"Poppins",sans-serif;font-weight:700;font-size:13px;color:var(--coral-d)}
+.reserve-banner{background:var(--teal-soft);border:1px solid var(--teal);color:var(--deep);border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:14.5px}
+.reserve-banner strong{color:var(--teal-d)}
+@media(max-width:900px){.pdp{grid-template-columns:1fr;gap:24px}.pdp-gallery{position:static}}

@@ -29,7 +29,7 @@ def header(active):
         cls = ' class="active"' if key==active else ''
         return f'<a href="{href}"{cls}>{label}</a>'
     nav = (a("tune-up.html","$129 Tune-Up","tuneup")+a("service.html","Service","service")
-           +a("rentals.html","Rentals","rentals")+a("new-bikes.html","New Bikes","newbikes")
+           +a("rentals.html","Rentals","rentals")+a("new-bikes.html","New Bikes","newbikes")+a("ebikes.html","E-Bikes","ebikes")
            +a("about.html","Meet Tony","about")+a("contact.html","Visit","visit"))
     hdr_cta = "" if active=="home" else '<a href="book.html" class="btn btn-coral" style="padding:11px 20px;font-size:13px">Book my pickup</a>' 
     return f'''<header class="site"><div class="headbar">
@@ -151,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=24">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=25">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -345,7 +345,7 @@ def build_index():
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p></div></div>
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p></div></div>
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right. <a href="new-bikes.html">See the lineup &rarr;</a></p></div></div>
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind. <a href="new-bikes.html">See the e-bikes &rarr;</a></p></div></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind. <a href="ebikes.html">See the e-bikes &rarr;</a></p></div></div>
   </div>
 </section>
 
@@ -1085,7 +1085,7 @@ def build_contact():
 '''
     return head("Visit &amp; Contact - Lake Park Bicycles - 561-842-0303",
                 "Questions? Call 561-842-0303 or send a note and Tony gets right back to you. Rentals delivered and $129 tune-up pickups across the Palm Beaches.",
-                "cat-city.png","visit") + body + footer()
+                "cat-city.png","visit") + body + RESERVE_JS + footer()
 
 def build_rent():
     body = RESERVE_STYLE + '''
@@ -1830,6 +1830,133 @@ def build_newbikes():
                 "Now a Retrospec dealer in North Palm Beach. Kids' bikes, beach cruisers, city and hybrid bikes, and the Beaumont Rev electric - from $159. See them at Lake Park Bicycles or call 561-842-0303.",
                 "retrospec/spotlight.jpg","newbikes",jsonld) + body + footer()
 
+EBIKES = [
+ {"slug":"vetus-1","name":"Vetus 1 Fat Tire","type":"Fat-tire e-bike","stock":True,"pa":"749","pb":"699","colors":[],
+  "imgs":["vetus-1-1.webp","vetus-1-2.webp","vetus-1-3.webp","vetus-1-4.webp","vetus-1-5.webp"],
+  "tag":"Full suspension, 20-inch fat tires, and a 1000W punch that goes well past the city.",
+  "blurb":"The Vetus 1 is our go-anywhere fat-tire e-bike. Full suspension and 20-inch by 4-inch tires soak up sand, gravel and curbs, while a 1000W peak motor and adjustable 28 mph top speed give it real muscle. It is TUV and UL 2849 certified, and every one leaves the shop fully built, tuned and safety-checked by Tony.",
+  "specs":[("Motor","1000W peak rear hub, 60 Nm"),("Battery","48V 13Ah (624Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","20\" x 4\" fat"),("Suspension","Full - front fork + dual rear shocks"),("Drivetrain","Shimano 7-speed"),("Brakes","Disc"),("Display","4\" LCD"),("Rider height","5'5\" to 6'5\""),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"otium-m5l","name":"Otium M5L Step-Through","type":"Step-through commuter","stock":True,"pa":"599","pb":"549","colors":["Pink","Steel Blue","White"],
+  "imgs":["otium-m5l-1.jpg","otium-m5l-2.jpg","otium-m5l-3.jpg","otium-m5l-4.jpg","otium-m5l-5.jpg"],
+  "tag":"A low step-through frame that is easy on, easy off, with up to 50 miles of range.",
+  "blurb":"The Otium M5L is the friendliest way into e-bikes. The ultra-low step-through frame makes hopping on and off effortless, an easy-swap 480Wh battery delivers up to 50 miles, and 26-inch city tires keep the ride smooth and stable. A great pick for cruising the neighborhood or running errands.",
+  "specs":[("Motor","350W rated / 750W peak"),("Battery","48V 10Ah (480Wh), swappable"),("Range","Up to 50 mi"),("Top speed","20 mph"),("Tires","26\" x 2.125\" city"),("Frame","Low step-through"),("Rear rack","Holds up to 77 lb"),("Display","3\" LCD"),("Rider height","5'1\" to 6'1\""),("Colors","Pink, Steel Blue, White"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"otium-m5","name":"Otium M5 Commuter","type":"City commuter","stock":True,"pa":"599","pb":"549","colors":["Black","Navy Blue","White"],
+  "imgs":["otium-m5-1.jpg","otium-m5-2.jpg","otium-m5-3.jpg","otium-m5-4.jpg","otium-m5-5.jpg"],
+  "tag":"A dependable daily commuter with front suspension and mechanical disc brakes.",
+  "blurb":"The Otium M5 is a do-it-all city commuter. A 750W peak motor with a front suspension fork and mechanical disc brakes handles stop-and-go streets with confidence, while a Shimano 7-speed drivetrain and 480Wh battery give you up to 50 relaxed miles. Simple, solid, and ready every morning.",
+  "specs":[("Motor","750W peak rear hub, 45 Nm"),("Battery","48V 10Ah (480Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph"),("Throttle","Yes"),("Tires","26\" x 2.125\""),("Suspension","100mm front fork"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Mechanical disc"),("Weight","55.9 lb"),("Display","3\" LCD"),("Colors","Black, Navy Blue, White"),("Warranty","2-year")]},
+ {"slug":"otium-1","name":"Otium 1 Cruiser","type":"City cruiser","stock":False,"pa":"699","pb":"649","colors":["Pink","Mint Blue","White"],
+  "imgs":["otium-1-1.webp","otium-1-2.webp","otium-1-3.webp","otium-1-4.webp","otium-1-5.webp"],
+  "tag":"A comfortable step-thru cruiser for relaxed city miles.",
+  "blurb":"The Otium 1 is a comfort-first step-through cruiser. A 1000W peak motor and 624Wh battery give it plenty of pep and up to 50 miles of range, while 24-inch wheels and an upright ride make it easy and fun for everyday trips. Add the front basket and rear rack and it is ready for anything.",
+  "specs":[("Motor","500W rated / 1000W peak, 65 Nm"),("Battery","48V 13Ah (624Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","24\" x 1.95\" city"),("Frame","Step-through steel"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Disc, 160mm"),("Weight","64 lb"),("Display","2.2\" LCD"),("Colors","Pink, Mint Blue, White"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"otium-2","name":"Otium 2 Cruiser","type":"City cruiser","stock":False,"pa":"949","pb":"899","colors":["Creamy Yellow","Navy Blue"],
+  "imgs":["otium-2-1.webp","otium-2-2.webp","otium-2-3.webp","otium-2-4.webp","otium-2-5.webp"],
+  "tag":"More battery, more comfort - up to 60 miles on an ultra-low step-through.",
+  "blurb":"The Otium 2 steps everything up: a bigger 768Wh battery for up to 60 miles, a full aluminum ultra-low step-through frame, and a crisp 2.4-inch color display. It is the premium cruiser for riders who want extra range and a plush, upright ride around town.",
+  "specs":[("Motor","1000W peak, 65 Nm"),("Battery","48V 16Ah (768Wh)"),("Range","Up to 60 mi assist / 38 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","26\" x 2.125\" cruiser"),("Frame","Ultra-low step-through, aluminum"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Disc"),("Weight","64 lb"),("Display","2.4\" TFT color"),("Colors","Creamy Yellow, Navy Blue"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"vetus-2","name":"Vetus 2 Fat Tire","type":"Fat-tire e-bike","stock":False,"pa":"749","pb":"699","colors":[],
+  "imgs":["vetus-2-1.webp","vetus-2-2.webp","vetus-2-3.webp","vetus-2-4.jpg","vetus-2-5.webp"],
+  "tag":"Fat-tire capability with a big 4.3-inch display and NFC smart unlock.",
+  "blurb":"The Vetus 2 brings fat-tire versatility with a few smart touches: a large 4.3-inch color display, NFC smart unlock, and a front fork with a mid-spring shock to smooth out the bumps. A 1000W peak motor and up to 50 miles of range make it just as happy on the trail as in town.",
+  "specs":[("Motor","1000W peak, 60 Nm"),("Battery","48V 13Ah (624Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","20\" x 4\" fat"),("Suspension","Front fork + mid-spring shock"),("Drivetrain","Shimano 7-speed"),("Brakes","160mm disc"),("Display","4.3\" TFT color"),("Extras","NFC smart unlock"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"lumeo-2","name":"Lumeo 2 Carbon Fiber","type":"Carbon-fiber e-bike","stock":False,"pa":"1549","pb":"1499","colors":["Sky Blue","Beige","Gray"],
+  "imgs":["lumeo-2-1.webp","lumeo-2-2.webp","lumeo-2-3.webp","lumeo-2-4.webp","lumeo-2-5.webp"],
+  "tag":"Carbon-fiber light, with a dual battery and up to 120 miles of range.",
+  "blurb":"The Lumeo 2 is the premium pick: a genuine carbon-fiber frame keeps it light, while a dual-battery system delivers a remarkable 120 miles of range. Hydraulic disc brakes, a lockable front fork and a color display round out a bike built for long, effortless rides.",
+  "specs":[("Motor","1000W peak, 65 Nm"),("Battery","Dual 48V 10Ah x2 (921Wh)"),("Range","Up to 120 mi assist / 50 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","26\" x 2.5\""),("Frame","Carbon fiber"),("Suspension","Lockable alloy front fork"),("Drivetrain","Shimano M310 7-speed"),("Brakes","Hydraulic disc"),("Weight","67 lb"),("Display","2.4\" TFT color"),("Colors","Sky Blue, Beige, Gray"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"terrn-2","name":"Terrn 2 Pro","type":"Off-road e-bike","stock":False,"pa":"2649","pb":"2599","colors":[],
+  "imgs":["terrn-2-1.webp","terrn-2-2.webp","terrn-2-3.webp","terrn-2-4.webp"],
+  "tag":"5500W of peak power, 40 mph, full suspension - a true off-road machine.",
+  "blurb":"The Terrn 2 Pro is the beast of the lineup: a 5500W peak motor, 40 mph top speed, and a massive 1920Wh removable battery for up to 70 miles. Full hydraulic suspension, moto-style knobby tires and 180mm hydraulic brakes make it a serious off-road ride. This one is for experienced riders who want it all.",
+  "specs":[("Motor","5500W peak, 135 Nm"),("Battery","60V 32Ah (1920Wh), removable"),("Range","Up to 70 mi assist / 45 mi throttle"),("Top speed","40 mph"),("Throttle","Yes"),("Tires","70/100-19 moto knobby"),("Suspension","Full - hydraulic front + rear"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Hydraulic, 180mm"),("Weight","127.6 lb"),("Display","4\" LCD"),("Warranty","2-year, UL 2849 certified")]},
+]
+
+RESERVE_JS = """
+<script>
+(function(){
+  var p=new URLSearchParams(location.search), b=p.get('reserve');
+  if(!b) return;
+  b=b.replace(/[<>]/g,'');
+  var f=document.getElementById('contactForm'); if(!f) return;
+  var m=f.querySelector('[name="message"]'); if(m) m.value="I'd like to reserve the "+b+" e-bike. Please contact me about availability, color and pickup.";
+  var s=f.querySelector('[name="subject"]'); if(s) s.value="E-Bike Reservation: "+b+" - Lake Park Bicycles";
+  var banner=document.createElement('div'); banner.className='reserve-banner';
+  banner.innerHTML="You're reserving: <strong>"+b+"</strong>";
+  f.parentNode.insertBefore(banner,f);
+})();
+</script>
+"""
+
+def _ebike_card(b, related=False):
+    ov = '<span class="stock-ov">In stock</span>' if b["stock"] else ''
+    tail = '' if related else '<p class="spec">'+b["tag"]+'</p>'
+    reslink = '' if related else '<span class="reserve-link">Reserve Mine &rarr;</span>'
+    return ('<a class="tile ebike-card" href="ebike-'+b["slug"]+'.html"><div class="ph">'+ov
+            +'<img src="assets/img/ebikes/'+b["imgs"][0]+'" alt="'+b["name"]+'" loading="lazy"></div>'
+            +'<div class="tb"><span class="cat cat-electric">'+b["type"]+'</span><h3>'+b["name"]+'</h3>'
+            +tail+'<div class="price">$'+b["pa"]+'<small>assembled</small></div>'+reslink+'</div></a>')
+
+def build_ebike(b):
+    imgs=b["imgs"]
+    thumbs="".join(
+      '<img src="assets/img/ebikes/%s" alt="%s"%s onclick="document.getElementById(&#39;pdp-main-img&#39;).src=this.src">'
+      % (im, b["name"], (' class="on"' if i==0 else '')) for i,im in enumerate(imgs))
+    stock='<span class="stockbadge">In stock - ready to ride</span>' if b["stock"] else ''
+    colors=('<div class="pdp-colors"><span>Colors</span>'+' &middot; '.join(b["colors"])+'</div>') if b["colors"] else ''
+    specrows="".join('<tr><td>'+k+'</td><td>'+v+'</td></tr>' for k,v in b["specs"])
+    rname=b["name"].replace(' ','%20')
+    rel=[x for x in EBIKES if x["slug"]!=b["slug"]][:4]
+    relcards="".join(_ebike_card(r, related=True) for r in rel)
+    body=('<section class="page-hero" style="padding-bottom:10px"><div class="in">'
+     '<div class="crumb" data-reveal><a href="index.html">Home</a> / <a href="ebikes.html">E-Bikes</a> / '+b["name"]+'</div>'
+     '</div></section>'
+     '<section class="section" style="padding-top:8px"><div class="pdp">'
+     '<div class="pdp-gallery" data-reveal><div class="pdp-main"><img id="pdp-main-img" src="assets/img/ebikes/'+imgs[0]+'" alt="'+b["name"]+'"></div>'
+     '<div class="pdp-thumbs">'+thumbs+'</div></div>'
+     '<div class="pdp-info" data-reveal>'+stock
+     +'<div class="eyebrow"><span>Eclio &middot; '+b["type"]+'</span></div>'
+     '<h1>'+b["name"]+'</h1><p class="pdp-tag">'+b["tag"]+'</p>'
+     '<div class="pdp-price"><div class="pp-row"><span class="pp-num">$'+b["pa"]+'</span><span class="pp-lbl">assembled &amp; ready to ride</span></div>'
+     '<p class="pp-note">Includes professional assembly, a full tune, and a safety check by Tony. Prefer to build it yourself? Take it home in the box for <strong>$'+b["pb"]+'</strong> and save $50.</p></div>'
+     +colors
+     +'<div class="pdp-acts"><a href="/contact?reserve='+rname+'" class="btn btn-coral btn-lg">Reserve Mine &rarr;</a>'
+     '<a href="tel:+15618420303" class="btn btn-outline btn-lg">Call 561&middot;842&middot;0303</a></div>'
+     '<ul class="pdp-assure"><li>Built, tuned &amp; safety-checked by Tony</li><li>Local service and support, right here in town</li><li>2-year manufacturer warranty</li></ul>'
+     '</div></div></section>'
+     '<section class="section" style="padding-top:22px"><div class="split pdp-detail" style="align-items:start">'
+     '<div data-reveal><div class="eyebrow"><span>About this bike</span></div><h2 class="sub-h">'+b["name"]+'</h2>'
+     '<p style="color:var(--slate);font-size:16px;line-height:1.7">'+b["blurb"]+'</p>'
+     '<p style="color:var(--muted);font-size:13.5px;line-height:1.6;margin-top:16px">Reserve online with no payment now - we will call to confirm the color, timing and pickup. Prices include professional assembly by Tony; we are not selling e-bikes for online checkout yet.</p></div>'
+     '<div data-reveal><div class="spectable"><h3>Specifications</h3><table>'+specrows+'</table><p class="spec-note">Specs are from the manufacturer and can change. Ask us anything.</p></div></div>'
+     '</div></section>'
+     '<section class="section" style="padding-top:18px"><div class="eyebrow" data-reveal><span>More e-bikes</span></div>'
+     '<h2 class="sub-h" data-reveal style="margin-bottom:22px">Keep looking.</h2><div class="biketiles">'+relcards+'</div></section>')
+    body += cta("Come ride it in the shop.<br>We build it, you enjoy it.", '<a href="/contact?reserve='+rname+'" class="btn btn-navy btn-lg">Reserve Mine &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')
+    desc=(b["name"]+" electric bike at Lake Park Bicycles, North Palm Beach. $"+b["pa"]+" assembled and ready to ride, or $"+b["pb"]+" in the box. "+b["tag"]+" Reserve yours: call 561-842-0303.")
+    jsonld=('\n<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"'+b["name"]
+            +'","brand":{"@type":"Brand","name":"Eclio"},"image":"https://www.lakeparkbicycles.com/assets/img/ebikes/'+imgs[0]
+            +'","description":"'+b["tag"]+'"}</script>')
+    return head(b["name"]+" E-Bike | Lake Park Bicycles", desc, "ebikes/"+imgs[0], "ebikes", jsonld) + body + footer()
+
+def build_ebikes():
+    cards="".join(_ebike_card(b) for b in EBIKES)
+    body=('<section class="page-hero"><div class="in">'
+     '<div class="crumb" data-reveal><a href="index.html">Home</a> / E-Bikes</div>'
+     '<div class="eyebrow" data-reveal><span>Now carrying Eclio electric bikes</span></div>'
+     '<h1 data-reveal>E-bikes for <em>every ride.</em></h1>'
+     '<p class="lead" data-reveal style="max-width:730px">Commuters, cruisers, fat-tire adventure, long-range carbon and a full-on off-road machine - a whole line of Eclio e-bikes, each one built, tuned and safety-checked by Tony before you ever throw a leg over it. Find the one you love and reserve it.</p>'
+     '</div></section>'
+     '<section class="section" style="padding-top:18px"><div class="biketiles">'+cards+'</div>'
+     '<div class="dealernote" data-reveal><div><p class="dn-k">Reserved, not checked out.</p>'
+     '<p>We are not taking e-bike payments online yet - and honestly, you would not want to buy one sight unseen. Tap <strong>Reserve Mine</strong> on any bike, tell us the color you like, and we will get it built and ready for you to come ride. Every e-bike is assembled and safety-checked by Tony, with local service if you ever need it. Questions? <a href="/contact">Message us</a> or call <a href="tel:+15618420303">561-842-0303</a>.</p></div></div>'
+     '</section>')
+    body += cta("Find your ride.<br>We'll have it built and ready.", '<a href="/contact" class="btn btn-navy btn-lg">Ask about e-bikes &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')
+    return head("Electric Bikes - Eclio E-Bikes, Assembled &amp; Ready | Lake Park Bicycles",
+                "Shop the Eclio e-bike line at Lake Park Bicycles in North Palm Beach: commuters, cruisers, fat-tire and long-range electric bikes from $599, professionally assembled and safety-checked by Tony. Reserve yours - call 561-842-0303.",
+                "ebikes/"+EBIKES[0]["imgs"][0], "ebikes") + body + footer()
+
 pages = {
   "index.html": build_index(),
   "thanks.html": build_thanks(),
@@ -1844,9 +1971,12 @@ pages = {
   "terms.html": build_terms(),
   "privacy.html": build_privacy(),
   "tips.html": build_tips(),
+  "ebikes.html": build_ebikes(),
 }
 for c in CITIES:
     pages[c["slug"]+".html"] = build_city(c)
+for b in EBIKES:
+    pages["ebike-"+b["slug"]+".html"] = build_ebike(b)
 
 import re
 def _slug(fn): return "" if fn=="index.html" else fn[:-5]
@@ -1876,13 +2006,13 @@ with open(os.path.join(OUT,"_redirects"),"w") as f:
     f.write("\n".join(red)+"\n")
 
 # sitemap.xml (clean URLs, exclude noindex pages)
-prio = {"index.html":"1.0","tune-up.html":"0.9","rentals.html":"0.9","new-bikes.html":"0.9","service.html":"0.8","terms.html":"0.3","privacy.html":"0.3"}
+prio = {"index.html":"1.0","tune-up.html":"0.9","rentals.html":"0.9","new-bikes.html":"0.9","ebikes.html":"0.9","service.html":"0.8","terms.html":"0.3","privacy.html":"0.3"}
 sm = ['<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for fn in pages:
     if fn in NOINDEX: continue
     loc = BASE + "/" + _slug(fn)
-    p = prio.get(fn, "0.7" if fn in [c["slug"]+".html" for c in CITIES] else "0.6")
+    p = prio.get(fn) or ("0.7" if (fn.startswith("ebike-") or fn in [c["slug"]+".html" for c in CITIES]) else "0.6")
     sm.append('  <url><loc>'+loc+'</loc><changefreq>weekly</changefreq><priority>'+p+'</priority></url>')
 sm.append('</urlset>')
 with open(os.path.join(OUT,"sitemap.xml"),"w") as f:
