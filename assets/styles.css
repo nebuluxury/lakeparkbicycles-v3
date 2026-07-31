@@ -650,3 +650,26 @@ footer.site{background:var(--deep);color:#cfe0e6}
 /* clickable home value cards */
 .cardlink{margin-top:auto;padding-top:14px;font-family:"Poppins",sans-serif;font-weight:700;font-size:13px;color:var(--coral-d)}
 .valcard:hover .cardlink{color:var(--coral)}
+
+/* ===== E-bike reservation modal ===== */
+.rmodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:18px}
+.rmodal[hidden]{display:none}
+.rmodal-ov{position:absolute;inset:0;background:rgba(10,38,49,.55);backdrop-filter:blur(3px)}
+.rmodal-card{position:relative;z-index:2;background:var(--shell);border-radius:22px;box-shadow:var(--shadow);width:min(520px,100%);max-height:92vh;overflow:auto;padding:24px}
+.rmodal-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:28px;line-height:1;color:var(--muted);cursor:pointer;padding:4px}
+.rmodal-x:hover{color:var(--deep)}
+.rmodal-head{display:flex;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}
+.rmodal-head img{width:96px;height:72px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:5px;flex:0 0 auto}
+.rm-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.rmodal-head h3{font-size:20px;margin:3px 0 4px}
+.rm-price{font-size:13px;color:var(--muted);font-weight:600}
+.rform{display:grid;gap:13px}
+.rform label{display:grid;gap:5px;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--deep)}
+.rform .opt{font-weight:400;color:var(--muted)}
+.rform input,.rform select,.rform textarea{font-family:inherit;font-size:15px;font-weight:400;color:var(--deep);background:#fff;border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .2s;width:100%}
+.rform input:focus,.rform select:focus,.rform textarea:focus{border-color:var(--teal)}
+.rform textarea{resize:vertical}
+.rform-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rform .btn{margin-top:4px;justify-content:center;width:100%}
+.rform-note{font-size:12px;color:var(--muted);text-align:center;margin:2px 0 0;line-height:1.5}
+@media(max-width:520px){.rform-2{grid-template-columns:1fr}.rmodal-card{padding:20px}}

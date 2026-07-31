@@ -151,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=26">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=27">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -1836,16 +1836,16 @@ EBIKES = [
   "tag":"Full suspension, 20-inch fat tires, and a 1000W punch that goes well past the city.",
   "blurb":"The Vetus 1 is our go-anywhere fat-tire e-bike. Full suspension and 20-inch by 4-inch tires soak up sand, gravel and curbs, while a 1000W peak motor and adjustable 28 mph top speed give it real muscle. It is TUV and UL 2849 certified, and every one leaves the shop fully built, tuned and safety-checked by Tony.",
   "specs":[("Motor","1000W peak rear hub, 60 Nm"),("Battery","48V 13Ah (624Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph, adjustable to 28 mph"),("Throttle","Yes"),("Tires","20\" x 4\" fat"),("Suspension","Full - front fork + dual rear shocks"),("Drivetrain","Shimano 7-speed"),("Brakes","Disc"),("Display","4\" LCD"),("Rider height","5'5\" to 6'5\""),("Warranty","2-year, UL 2849 certified")]},
- {"slug":"otium-m5l","name":"Otium M5L Step-Through","type":"Step-through commuter","stock":True,"pa":"599","pb":"549","colors":["Pink","Steel Blue","White"],
+ {"slug":"otium-m5l","name":"Otium M5L Step-Through","type":"Step-through commuter","stock":True,"pa":"599","pb":"549","colors":["Steel Blue","Pink"],
   "imgs":["otium-m5l-1.jpg","otium-m5l-2.jpg","otium-m5l-3.jpg","otium-m5l-4.jpg","otium-m5l-5.jpg"],
   "tag":"A low step-through frame that is easy on, easy off, with up to 50 miles of range.",
   "blurb":"The Otium M5L is the friendliest way into e-bikes. The ultra-low step-through frame makes hopping on and off effortless, an easy-swap 480Wh battery delivers up to 50 miles, and 26-inch city tires keep the ride smooth and stable. A great pick for cruising the neighborhood or running errands.",
-  "specs":[("Motor","350W rated / 750W peak"),("Battery","48V 10Ah (480Wh), swappable"),("Range","Up to 50 mi"),("Top speed","20 mph"),("Tires","26\" x 2.125\" city"),("Frame","Low step-through"),("Rear rack","Holds up to 77 lb"),("Display","3\" LCD"),("Rider height","5'1\" to 6'1\""),("Colors","Pink, Steel Blue, White"),("Warranty","2-year, UL 2849 certified")]},
- {"slug":"otium-m5","name":"Otium M5 Commuter","type":"City commuter","stock":True,"pa":"599","pb":"549","colors":["Black","Navy Blue","White"],
+  "specs":[("Motor","350W rated / 750W peak"),("Battery","48V 10Ah (480Wh), swappable"),("Range","Up to 50 mi"),("Top speed","20 mph"),("Tires","26\" x 2.125\" city"),("Frame","Low step-through"),("Rear rack","Holds up to 77 lb"),("Display","3\" LCD"),("Rider height","5'1\" to 6'1\""),("Colors","Steel Blue, Pink"),("Warranty","2-year, UL 2849 certified")]},
+ {"slug":"otium-m5","name":"Otium M5 Commuter","type":"City commuter","stock":True,"pa":"599","pb":"549","colors":["Black","Navy Blue"],
   "imgs":["otium-m5-1.jpg","otium-m5-2.jpg","otium-m5-3.jpg","otium-m5-4.jpg","otium-m5-5.jpg"],
   "tag":"A dependable daily commuter with front suspension and mechanical disc brakes.",
   "blurb":"The Otium M5 is a do-it-all city commuter. A 750W peak motor with a front suspension fork and mechanical disc brakes handles stop-and-go streets with confidence, while a Shimano 7-speed drivetrain and 480Wh battery give you up to 50 relaxed miles. Simple, solid, and ready every morning.",
-  "specs":[("Motor","750W peak rear hub, 45 Nm"),("Battery","48V 10Ah (480Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph"),("Throttle","Yes"),("Tires","26\" x 2.125\""),("Suspension","100mm front fork"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Mechanical disc"),("Weight","55.9 lb"),("Display","3\" LCD"),("Colors","Black, Navy Blue, White"),("Warranty","2-year")]},
+  "specs":[("Motor","750W peak rear hub, 45 Nm"),("Battery","48V 10Ah (480Wh)"),("Range","Up to 50 mi assist / 30 mi throttle"),("Top speed","20 mph"),("Throttle","Yes"),("Tires","26\" x 2.125\""),("Suspension","100mm front fork"),("Drivetrain","Shimano TZ500 7-speed"),("Brakes","Mechanical disc"),("Weight","55.9 lb"),("Display","3\" LCD"),("Colors","Black, Navy Blue"),("Warranty","2-year")]},
  {"slug":"otium-1","name":"Otium 1 Cruiser","type":"City cruiser","stock":False,"pa":"699","pb":"649","colors":["Pink","Mint Blue","White"],
   "imgs":["otium-1-1.webp","otium-1-2.webp","otium-1-3.webp","otium-1-4.webp","otium-1-5.webp"],
   "tag":"A comfortable step-thru cruiser for relaxed city miles.",
@@ -1889,10 +1889,46 @@ RESERVE_JS = """
 </script>
 """
 
+RESERVE_MODAL_JS = """
+<script>
+function openReserve(){var m=document.getElementById('rmodal');if(!m)return;m.hidden=false;document.body.style.overflow='hidden';var n=m.querySelector('[name=name]');if(n){setTimeout(function(){n.focus();},60);}}
+function closeReserve(){var m=document.getElementById('rmodal');if(!m)return;m.hidden=true;document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27)closeReserve();});
+window.addEventListener('load',function(){if(location.hash==='#reserve')openReserve();});
+</script>
+"""
+
+def _reserve_modal(b):
+    cf=""
+    if b["colors"]:
+        cf='<label>Color<select name="color">'+"".join('<option>'+c+'</option>' for c in b["colors"])+'</select></label>'
+    return ('<div class="rmodal" id="rmodal" hidden><div class="rmodal-ov" onclick="closeReserve()"></div>'
+      '<div class="rmodal-card" role="dialog" aria-modal="true" aria-label="Reserve '+b["name"]+'">'
+      '<button class="rmodal-x" type="button" onclick="closeReserve()" aria-label="Close">&times;</button>'
+      '<div class="rmodal-head"><img src="assets/img/ebikes/'+b["imgs"][0]+'" alt="'+b["name"]+'">'
+      '<div><div class="rm-eyebrow">Reserve this e-bike</div><h3>'+b["name"]+'</h3>'
+      '<div class="rm-price">$'+b["pa"]+' assembled &middot; $'+b["pb"]+' in the box</div></div></div>'
+      '<form class="rform" name="ebike-reservation" method="POST" data-netlify="true" action="https://api.web3forms.com/submit">'
+      '<input type="hidden" name="access_key" value="dfacc1b4-52f3-4b47-bc9c-bbd01c81fdc1">'
+      '<input type="hidden" name="subject" value="E-Bike Reservation: '+b["name"]+' - Lake Park Bicycles">'
+      '<input type="hidden" name="from_name" value="Lake Park Bicycles Website">'
+      '<input type="hidden" name="redirect" value="https://lakeparkbicycles.com/thanks">'
+      '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">'
+      '<input type="hidden" name="bike" value="'+b["name"]+'">'
+      +cf+
+      '<label>Build option<select name="build"><option>Assembled - ready to ride ($'+b["pa"]+')</option><option>In the box - save $50 ($'+b["pb"]+')</option></select></label>'
+      '<label>Your name<input type="text" name="name" placeholder="First and last" required></label>'
+      '<div class="rform-2"><label>Phone<input type="tel" name="phone" placeholder="(561) 000-0000" required></label>'
+      '<label>Email<input type="email" name="email" placeholder="you@email.com" required></label></div>'
+      '<label>Anything else? <span class="opt">(optional)</span><textarea name="message" rows="2" placeholder="Questions, timing, a trade-in..."></textarea></label>'
+      '<button type="submit" class="btn btn-coral btn-lg">Reserve Mine &rarr;</button>'
+      '<p class="rform-note">No payment now - Tony will call to confirm the color, timing and pickup.</p>'
+      '</form></div></div>')
+
 def _ebike_card(b, related=False):
     ov = '<span class="stock-ov">In stock</span>' if b["stock"] else ''
     tail = '' if related else '<p class="spec">'+b["tag"]+'</p>'
-    reslink = '' if related else '<span class="reserve-link">Reserve Mine &rarr;</span>'
+    reslink = '' if related else '<span class="reserve-link">View &amp; reserve &rarr;</span>'
     return ('<a class="tile ebike-card" href="ebike-'+b["slug"]+'.html"><div class="ph">'+ov
             +'<img src="assets/img/ebikes/'+b["imgs"][0]+'" alt="'+b["name"]+'" loading="lazy"></div>'
             +'<div class="tb"><span class="cat cat-electric">'+b["type"]+'</span><h3>'+b["name"]+'</h3>'
@@ -1921,7 +1957,7 @@ def build_ebike(b):
      '<div class="pdp-price"><div class="pp-row"><span class="pp-num">$'+b["pa"]+'</span><span class="pp-lbl">assembled &amp; ready to ride</span></div>'
      '<p class="pp-note">Includes professional assembly, a full tune, and a safety check by Tony. Prefer to build it yourself? Take it home in the box for <strong>$'+b["pb"]+'</strong> and save $50.</p></div>'
      +colors
-     +'<div class="pdp-acts"><a href="/contact?reserve='+rname+'" class="btn btn-coral btn-lg">Reserve Mine &rarr;</a>'
+     +'<div class="pdp-acts"><button type="button" onclick="openReserve()" class="btn btn-coral btn-lg">Reserve Mine &rarr;</button>'
      '<a href="tel:+15618420303" class="btn btn-outline btn-lg">Call 561&middot;842&middot;0303</a></div>'
      '<ul class="pdp-assure"><li>Built, tuned &amp; safety-checked by Tony</li><li>Local service and support, right here in town</li><li>2-year manufacturer warranty</li></ul>'
      '</div></div></section>'
@@ -1933,11 +1969,12 @@ def build_ebike(b):
      '</div></section>'
      '<section class="section" style="padding-top:18px"><div class="eyebrow" data-reveal><span>More e-bikes</span></div>'
      '<h2 class="sub-h" data-reveal style="margin-bottom:22px">Keep looking.</h2><div class="biketiles">'+relcards+'</div></section>')
-    body += cta("Come ride it in the shop.<br>We build it, you enjoy it.", '<a href="/contact?reserve='+rname+'" class="btn btn-navy btn-lg">Reserve Mine &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')
+    body += cta("Come ride it in the shop.<br>We build it, you enjoy it.", '<button type="button" onclick="openReserve()" class="btn btn-navy btn-lg">Reserve Mine &rarr;</button><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')
     desc=(b["name"]+" electric bike at Lake Park Bicycles, North Palm Beach. $"+b["pa"]+" assembled and ready to ride, or $"+b["pb"]+" in the box. "+b["tag"]+" Reserve yours: call 561-842-0303.")
     jsonld=('\n<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"'+b["name"]
             +'","brand":{"@type":"Brand","name":"Eclio"},"image":"https://www.lakeparkbicycles.com/assets/img/ebikes/'+imgs[0]
             +'","description":"'+b["tag"]+'"}</script>')
+    body += _reserve_modal(b) + RESERVE_MODAL_JS
     return head(b["name"]+" E-Bike | Lake Park Bicycles", desc, "ebikes/"+imgs[0], "ebikes", jsonld) + body + footer()
 
 def build_ebikes():
