@@ -151,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=27">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=28">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -1898,6 +1898,9 @@ window.addEventListener('load',function(){if(location.hash==='#reserve')openRese
 </script>
 """
 
+INFO_ASSEMBLY = ('<span class="infowrap"><button type="button" class="infodot" aria-label="Why professional assembly matters">?</button>'
+ '<span class="infopop" role="tooltip">These e-bikes need to be assembled at the correct torque, with every bolt tight, the brakes and gears properly adjusted, and a full safety inspection before the first ride. We highly recommend letting our trained technicians handle it for you.</span></span>')
+
 def _reserve_modal(b):
     cf=""
     if b["colors"]:
@@ -1916,7 +1919,7 @@ def _reserve_modal(b):
       '<input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">'
       '<input type="hidden" name="bike" value="'+b["name"]+'">'
       +cf+
-      '<label>Build option<select name="build"><option>Assembled - ready to ride ($'+b["pa"]+')</option><option>In the box - save $50 ($'+b["pb"]+')</option></select></label>'
+      '<label><span class="lbl-cap">Build option '+INFO_ASSEMBLY+'</span><select name="build"><option>Professional assembly - ready to ride ($'+b["pa"]+')</option><option>In the box - save $50 ($'+b["pb"]+')</option></select></label>'
       '<label>Your name<input type="text" name="name" placeholder="First and last" required></label>'
       '<div class="rform-2"><label>Phone<input type="tel" name="phone" placeholder="(561) 000-0000" required></label>'
       '<label>Email<input type="email" name="email" placeholder="you@email.com" required></label></div>'
@@ -1955,7 +1958,7 @@ def build_ebike(b):
      +'<div class="eyebrow"><span>Eclio &middot; '+b["type"]+'</span></div>'
      '<h1>'+b["name"]+'</h1><p class="pdp-tag">'+b["tag"]+'</p>'
      '<div class="pdp-price"><div class="pp-row"><span class="pp-num">$'+b["pa"]+'</span><span class="pp-lbl">assembled &amp; ready to ride</span></div>'
-     '<p class="pp-note">Includes professional assembly, a full tune, and a safety check by Tony. Prefer to build it yourself? Take it home in the box for <strong>$'+b["pb"]+'</strong> and save $50.</p></div>'
+     '<p class="pp-note">Includes professional assembly '+INFO_ASSEMBLY+', a full tune, and a safety check by Tony. Prefer to build it yourself? Take it home in the box for <strong>$'+b["pb"]+'</strong> and save $50.</p></div>'
      +colors
      +'<div class="pdp-acts"><button type="button" onclick="openReserve()" class="btn btn-coral btn-lg">Reserve Mine &rarr;</button>'
      '<a href="tel:+15618420303" class="btn btn-outline btn-lg">Call 561&middot;842&middot;0303</a></div>'

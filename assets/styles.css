@@ -673,3 +673,12 @@ footer.site{background:var(--deep);color:#cfe0e6}
 .rform .btn{margin-top:4px;justify-content:center;width:100%}
 .rform-note{font-size:12px;color:var(--muted);text-align:center;margin:2px 0 0;line-height:1.5}
 @media(max-width:520px){.rform-2{grid-template-columns:1fr}.rmodal-card{padding:20px}}
+
+/* info bubble tooltip (hover + tap) */
+.infowrap{position:relative;display:inline-flex;vertical-align:middle;margin-left:5px}
+.infodot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--muted);background:none;color:var(--muted);font-size:10px;font-weight:700;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0;font-family:"Poppins",sans-serif}
+.infodot:hover,.infodot:focus{border-color:var(--teal);color:var(--teal);outline:none}
+.infopop{position:absolute;left:calc(100% + 9px);top:50%;transform:translateY(-50%);width:242px;max-width:70vw;background:var(--deep);color:#eaf3f6;font-size:12.5px;font-weight:400;line-height:1.5;letter-spacing:.01em;text-transform:none;padding:11px 13px;border-radius:12px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:opacity .16s,visibility .16s;z-index:20}
+.infopop:after{content:"";position:absolute;right:100%;top:50%;transform:translateY(-50%);border:6px solid transparent;border-right-color:var(--deep)}
+.infowrap:hover .infopop,.infodot:focus + .infopop{opacity:1;visibility:visible}
+@media(max-width:560px){.infopop{left:auto;right:0;top:calc(100% + 9px);transform:none;width:220px}.infopop:after{right:11px;left:auto;top:auto;bottom:100%;transform:none;border-right-color:transparent;border-bottom-color:var(--deep)}}
