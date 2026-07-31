@@ -99,6 +99,14 @@ def footer():
     <div class="foot-legal">
       <div class="copy">&copy; <span id="yr">2026</span> Lake Park Bicycles &middot; Est. 1975 &middot; 910 Northlake Blvd, North Palm Beach FL 33408</div>
     </div>
+    <!-- DV8 Web credit -->
+    <div style="text-align:center;margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08)">
+      <a class="dv8-credit" href="https://dv8web.com" target="_blank" rel="noopener" aria-label="Dare to deviate - DV8 Web">
+        <span>Dare to deviate</span>
+        <span class="dv8-orbit"><span class="dv8-ring"></span><span class="dv8-core"></span><span class="dv8-sat"><i></i></span></span>
+        <strong>DV8&nbsp;Web</strong>
+      </a>
+    </div>
     <div hidden aria-hidden="true">
       <form name="rental" data-netlify="true"><input type="hidden" name="form-name" value="rental"><input name="bikes"><input name="dates"><input name="dropoff_window"><input name="handoff"><input name="address"><input name="name"><input name="phone"><input name="email"><input name="estimated_total"></form>
       <form name="tuneup" data-netlify="true"><input type="hidden" name="form-name" value="tuneup"><input name="the_package"><input name="pickup"><input name="address"><input name="day"><input name="bike"><input name="name"><input name="phone"><input name="email"><input name="total"></form>
@@ -143,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=22">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=23">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -309,7 +317,7 @@ def build_index():
     <div>
       <div class="eyebrow" data-reveal><span>Family-owned since 1975</span></div>
       <h1 data-reveal>We come<br><em>to you.</em></h1>
-      <p class="lead" data-reveal>North Palm Beach's family bike shop for fifty years. Two ways we keep you rolling: our <strong>$129 Full Tune-Up, delivered free</strong> (summer sale - reg $169), and <strong>bike and e-bike rentals</strong> delivered to your door - Jupiter to Lake Park.</p>
+      <p class="lead" data-reveal>North Palm Beach's family bike shop for fifty years. We keep you rolling: our <strong>$129 Full Tune-Up, delivered free</strong> (summer sale - reg $169), bike and e-bike <strong>rentals</strong> delivered to your door, and a full line of <strong>new bikes</strong> - Jupiter to Lake Park.</p>
       <div class="acts" data-reveal>
         <a href="tune-up.html" class="btn btn-teal btn-lg">$129 Tune-Up &rarr;</a>
         <a href="rent.html" class="btn btn-outline btn-lg">Rent a Bike</a>
@@ -335,7 +343,7 @@ def build_index():
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p></div></div>
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p></div></div>
     <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right. <a href="new-bikes.html">See the lineup &rarr;</a></p></div></div>
-    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="An e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Tony is a bicycle mechanic first, so we keep e-bikes honest: all the mechanical work, a $20 battery evaluation, and a $75 electrical diagnostic. We will install the battery or controller you supply - we just do not chase down proprietary parts.</p></div></div>
+    <div class="valcard" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind. <a href="new-bikes.html">See the e-bikes &rarr;</a></p></div></div>
   </div>
 </section>
 
