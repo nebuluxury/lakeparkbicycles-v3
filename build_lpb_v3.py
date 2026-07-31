@@ -151,7 +151,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=23">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=24">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -314,19 +314,21 @@ def build_index():
     body = f'''
 <section class="hero">
   <div class="hero-grid">
-    <div>
+    <div class="hero-copy">
       <div class="eyebrow" data-reveal><span>Family-owned since 1975</span></div>
-      <h1 data-reveal>We come<br><em>to you.</em></h1>
-      <p class="lead" data-reveal>North Palm Beach's family bike shop for fifty years. We keep you rolling: our <strong>$129 Full Tune-Up, delivered free</strong> (summer sale - reg $169), bike and e-bike <strong>rentals</strong> delivered to your door, and a full line of <strong>new bikes</strong> - Jupiter to Lake Park.</p>
+      <h1 data-reveal>We come <em>to you.</em></h1>
+      <p class="lead" data-reveal>North Palm Beach's family bike shop for fifty years - doorstep tune-ups, bike and e-bike rentals delivered, and a full line of new bikes for the whole family.</p>
       <div class="acts" data-reveal>
         <a href="tune-up.html" class="btn btn-teal btn-lg">$129 Tune-Up &rarr;</a>
         <a href="rent.html" class="btn btn-outline btn-lg">Rent a Bike</a>
       </div>
+      <div class="hero-trust" data-reveal><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Loved on Google &middot; <b>50 years</b> on the same bench</span></div>
     </div>
-    <div class="hero-media" data-reveal>
-      <div class="photo"><img src="assets/img/cat-kids.png" alt="A family riding bikes on a palm-lined coastal trail"></div>
-      <div class="float-card fc-1"><div class="ic teal">{ICON['pin']}</div><div><div class="t">50 yrs</div><div class="s">in our community</div></div></div>
-      <div class="float-card fc-2"><div class="ic coral">{ICON['tag']}</div><div><div class="t">$129</div><div class="s">summer tune-up sale</div></div></div>
+    <div class="hero-bento" data-reveal>
+      <div class="b big"><img src="assets/img/cat-kids.png" alt="A family riding bikes on a palm-lined coastal trail"></div>
+      <div class="b"><img src="assets/img/service-mechanic.png" alt="Tony servicing a bike on the repair stand"></div>
+      <div class="b"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a new bike along the boardwalk"></div>
+      <div class="hero-pill"><span class="n">$129</span><span class="s">Full Tune-Up<br>delivered free</span></div>
     </div>
   </div>
 </section>
