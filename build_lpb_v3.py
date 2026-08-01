@@ -5,7 +5,8 @@ OUT = os.path.expanduser("~/Documents/git/lakeparkbicycles-v3")
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-         '<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">')
+         '<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel=\'stylesheet\'">'
+         '<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Poppins:wght@400;500;600;700&display=swap"></noscript>')
 
 def brand(footer=False):
     # Official badge logo (Established 1975), circular cutout - assets/img/logo-badge.png
@@ -335,7 +336,7 @@ def build_index():
       <div class="hero-trust"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Loved on Google &middot; <b>50 years</b> on the same bench</span></div>
     </div>
     <div class="hero-bento">
-      <div class="b big"><img src="assets/img/cat-kids.webp" alt="A family riding bikes on a palm-lined coastal trail" fetchpriority="high" width="747" height="1000"></div>
+      <div class="b big"><img src="assets/img/cat-kids.webp" srcset="assets/img/cat-kids-480.webp 480w, assets/img/cat-kids.webp 747w" sizes="(max-width:900px) 86vw, 42vw" alt="A family riding bikes on a palm-lined coastal trail" fetchpriority="high" width="747" height="1000"></div>
       <div class="b"><img src="assets/img/service-mechanic.webp" alt="Tony servicing a bike on the repair stand" loading="lazy" width="806" height="1000"></div>
       <div class="b"><img src="assets/img/retrospec/spotlight.webp" alt="Riding a new bike along the boardwalk" loading="lazy" width="1000" height="1000"></div>
       <div class="hero-pill"><span class="n">$129</span><span class="s">Full Tune-Up<br>delivered free</span></div>
