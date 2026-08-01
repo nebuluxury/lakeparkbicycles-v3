@@ -413,7 +413,7 @@ def build_index():
   </div>
 </section>
 '''
-    return head("Lake Park Bicycles - $129 Doorstep Tune-Up &amp; Bike Rentals, North Palm Beach",
+    return head("Lake Park Bicycles - Tune-Ups &amp; Rentals, North Palm Beach",
                 "Bike service and rentals in North Palm Beach since 1975. The $129 Full Tune-Up delivered free this summer (reg $169); Safety Check from $99. Plus bike and e-bike rentals delivered to your hotel, condo or home. Call 561-842-0303.",
                 "cat-kids.webp","home",jsonld) + body + footer()
 
@@ -458,7 +458,7 @@ def build_tuneup():
 
 {cta("Book your pickup.<br>We will do the rest.", '<a href="book.html" class="btn btn-navy btn-lg">Book my pickup &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')}
 '''
-    return head("$129 Full Tune-Up - Free Doorstep Delivery - Lake Park Bicycles",
+    return head("$129 Full Tune-Up, Delivered Free | Lake Park Bicycles",
                 "The bike tune-up that comes to you: our $129 Full Tune-Up delivered free this summer (reg $169), Safety Check from $99, 72-hour turnaround within 10 miles of North Palm Beach, 100% happy or we fix it free.",
                 "service-hero.webp","tuneup") + body + footer()
 
@@ -585,7 +585,7 @@ def build_service():
 
 {cta("Any bike. Any problem.<br>We come to you.", '<a href="contact.html" class="btn btn-navy btn-lg">Book a repair &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')}
 '''
-    return head("Mobile Bike Repair Near You - North Palm Beach to Jupiter | Lake Park Bicycles",
+    return head("Bike Repair &amp; Service, North Palm Beach | Lake Park Bicycles",
                 "Complete bike repair in North Palm Beach: brakes, drivetrain, wheels, bearings, e-bikes and assembly. Full a la carte price list, doorstep service, and 100% happy or we fix it free.",
                 "service-hero.webp","service") + body + footer()
 
@@ -1545,7 +1545,7 @@ def build_terms():
   <p>Welcome to Lake Park Bicycles. These Terms &amp; Conditions ("Terms") govern your use of our website (lakeparkbicycles.com) and the services we provide, including doorstep tune-ups, bicycle repairs, and bicycle and e-bike rentals. By booking a service, renting a bicycle, or using this website, you agree to these Terms. If you do not agree, please do not use our services.</p>
 
   <h2>1. Who we are</h2>
-  <p>Lake Park Bicycles is a family-owned bicycle service and rental business at 910 Northlake Blvd, North Palm Beach, FL 33408, serving North Palm Beach, Lake Park, Palm Beach Gardens, Juno Beach, Jupiter and the surrounding area (generally within about 10 miles of the shop). Reach us at <a href="tel:+15618420303">561-842-0303</a> or lakeparkbicycle@gmail.com.</p>
+  <p>Lake Park Bicycles is a family-owned bicycle service and rental business at 910 Northlake Blvd, North Palm Beach, FL 33408, serving North Palm Beach, Lake Park, Palm Beach Gardens, Juno Beach, Jupiter and the surrounding area (generally within about 10 miles of the shop). Reach us at <a href="tel:+15618420303">561-842-0303</a> or through our <a href="contact.html">contact form</a>.</p>
 
   <h2>2. Our services</h2>
   <p>We offer mobile bicycle tune-ups and repairs - we pick up, service, and return your bike - and bicycle and e-bike rentals delivered to your location or available for pickup at the shop. Service descriptions, package contents, and prices are shown on our website and are subject to change without notice. E-bike diagnostics and service are quoted separately.</p>
@@ -1596,7 +1596,7 @@ def build_terms():
   <p>We may update these Terms from time to time. The version posted on this page, with its effective date, is the current one.</p>
 
   <h2>13. Contact us</h2>
-  <p>Questions about these Terms? Call <a href="tel:+15618420303">561-842-0303</a> or email lakeparkbicycle@gmail.com, or stop by 910 Northlake Blvd, North Palm Beach, FL 33408.</p>
+  <p>Questions about these Terms? Call <a href="tel:+15618420303">561-842-0303</a> or use our <a href="contact.html">contact form</a>, or stop by 910 Northlake Blvd, North Palm Beach, FL 33408.</p>
 </div></section>
 '''
     return head("Terms &amp; Conditions - Lake Park Bicycles",
@@ -1654,7 +1654,7 @@ def build_privacy():
   <p>We may update this policy from time to time. The version posted here, with its effective date, is the current one.</p>
 
   <h2>11. Contact us</h2>
-  <p>Questions about your privacy? Call <a href="tel:+15618420303">561-842-0303</a> or email lakeparkbicycle@gmail.com, or write to Lake Park Bicycles, 910 Northlake Blvd, North Palm Beach, FL 33408.</p>
+  <p>Questions about your privacy? Call <a href="tel:+15618420303">561-842-0303</a> or use our <a href="contact.html">contact form</a>, or write to Lake Park Bicycles, 910 Northlake Blvd, North Palm Beach, FL 33408.</p>
 </div></section>
 '''
     return head("Privacy Policy - Lake Park Bicycles",
@@ -2005,7 +2005,7 @@ def build_ebikes():
      '<p>We are not taking e-bike payments online yet - and honestly, you would not want to buy one sight unseen. Tap <strong>Reserve Mine</strong> on any bike, tell us the color you like, and we will get it built and ready for you to come ride. Every e-bike is assembled and safety-checked by Tony, with local service if you ever need it. Questions? <a href="/contact">Message us</a> or call <a href="tel:+15618420303">561-842-0303</a>.</p></div></div>'
      '</section>')
     body += cta("Find your ride.<br>We'll have it built and ready.", '<a href="/contact" class="btn btn-navy btn-lg">Ask about e-bikes &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a>')
-    return head("Electric Bikes - Eclio E-Bikes, Assembled &amp; Ready | Lake Park Bicycles",
+    return head("Electric Bikes - Eclio E-Bikes | Lake Park Bicycles",
                 "Shop the Eclio e-bike line at Lake Park Bicycles in North Palm Beach: commuters, cruisers, fat-tire and long-range electric bikes from $599, professionally assembled and safety-checked by Tony. Reserve yours - call 561-842-0303.",
                 "ebikes/"+EBIKES[0]["imgs"][0], "ebikes") + body + footer()
 
