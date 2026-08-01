@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR"></script>
+<!-- Google tag (gtag.js), deferred to idle so it stays off the critical path -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-RER3R64TQR');
+  (function(){function g(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR';document.head.appendChild(s);}
+   if('requestIdleCallback' in window){requestIdleCallback(g,{timeout:3000});}else{window.addEventListener('load',g);}})();
 </script>
 <title>Book a Service or Repair - Lake Park Bicycles</title>
 <meta name="description" content="Book doorstep bike service: a tune-up (Safety Check $99, Full Tune-Up $129, Overhaul $199) or any repair - flats, brakes, gears, wheels, e-bikes. Pickup and delivery, free once your ticket reaches $129.">

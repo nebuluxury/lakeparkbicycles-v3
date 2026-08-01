@@ -126,13 +126,14 @@ def footer():
 </body>
 </html>'''
 
-GA_TAG = '''<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR"></script>
+GA_TAG = '''<!-- Google tag (gtag.js), deferred to idle so it stays off the critical path -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-RER3R64TQR');
+  (function(){function g(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR';document.head.appendChild(s);}
+   if('requestIdleCallback' in window){requestIdleCallback(g,{timeout:3000});}else{window.addEventListener('load',g);}})();
 </script>'''
 
 REVIEWS = ('<!-- Reviews (GHL reputation widget), lazy-loaded -->\n'

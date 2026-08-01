@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR"></script>
+<!-- Google tag (gtag.js), deferred to idle so it stays off the critical path -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-RER3R64TQR');
+  (function(){function g(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-RER3R64TQR';document.head.appendChild(s);}
+   if('requestIdleCallback' in window){requestIdleCallback(g,{timeout:3000});}else{window.addEventListener('load',g);}})();
 </script>
 <title>Terrn 2 Pro E-Bike | Lake Park Bicycles</title>
 <meta name="description" content="Terrn 2 Pro electric bike at Lake Park Bicycles, North Palm Beach. $2649 assembled and ready to ride, or $2599 in the box. 5500W of peak power, 40 mph, full suspension - a true off-road machine. Reserve yours: call 561-842-0303.">
