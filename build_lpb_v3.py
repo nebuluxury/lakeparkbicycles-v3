@@ -1945,14 +1945,14 @@ def _ebike_card(b, related=False):
     tail = '' if related else '<p class="spec">'+b["tag"]+'</p>'
     reslink = '' if related else '<span class="reserve-link">View &amp; reserve &rarr;</span>'
     return ('<a class="tile ebike-card" href="ebike-'+b["slug"]+'.html"><div class="ph">'+ov
-            +'<img src="assets/img/ebikes/'+b["imgs"][0]+'" alt="'+b["name"]+'" loading="lazy"></div>'
+            +'<img src="assets/img/ebikes/'+b["imgs"][0]+'?v=2" alt="'+b["name"]+'" loading="lazy"></div>'
             +'<div class="tb"><span class="cat cat-electric">'+b["type"]+'</span><h3>'+b["name"]+'</h3>'
             +tail+'<div class="price">$'+b["pa"]+'<small>assembled</small></div>'+reslink+'</div></a>')
 
 def build_ebike(b):
     imgs=b["imgs"]
     thumbs="".join(
-      '<img src="assets/img/ebikes/%s" alt="%s"%s onclick="document.getElementById(&#39;pdp-main-img&#39;).src=this.src">'
+      '<img src="assets/img/ebikes/%s?v=2" alt="%s"%s onclick="document.getElementById(&#39;pdp-main-img&#39;).src=this.src">'
       % (im, b["name"], (' class="on"' if i==0 else '')) for i,im in enumerate(imgs))
     stock='<span class="stockbadge">In stock - ready to ride</span>' if b["stock"] else ''
     colors=('<div class="pdp-colors"><span>Colors</span>'+' &middot; '.join(b["colors"])+'</div>') if b["colors"] else ''
@@ -1964,7 +1964,7 @@ def build_ebike(b):
      '<div class="crumb" data-reveal><a href="index.html">Home</a> / <a href="ebikes.html">E-Bikes</a> / '+b["name"]+'</div>'
      '</div></section>'
      '<section class="section" style="padding-top:8px"><div class="pdp">'
-     '<div class="pdp-gallery" data-reveal><div class="pdp-main"><img id="pdp-main-img" src="assets/img/ebikes/'+imgs[0]+'" alt="'+b["name"]+'"></div>'
+     '<div class="pdp-gallery" data-reveal><div class="pdp-main"><img id="pdp-main-img" src="assets/img/ebikes/'+imgs[0]+'?v=2" alt="'+b["name"]+'"></div>'
      '<div class="pdp-thumbs">'+thumbs+'</div></div>'
      '<div class="pdp-info" data-reveal>'+stock
      +'<div class="eyebrow"><span>Eclio &middot; '+b["type"]+'</span></div>'
