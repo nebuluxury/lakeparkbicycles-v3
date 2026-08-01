@@ -33,7 +33,7 @@ def header(active):
            +a("about.html","Meet Tony","about")+a("contact.html","Visit","visit"))
     hdr_cta = "" if active=="home" else '<a href="book.html" class="btn btn-coral" style="padding:11px 20px;font-size:13px">Book my pickup</a>' 
     return f'''<header class="site"><div class="headbar">
-    <a href="index.html" class="brand" aria-label="Lake Park Bicycles home">{brand()}
+    <a href="index.html" class="brand">{brand()}
       <span class="word">Lake Park Bicycles<small>Est. 1975</small></span>
     </a>
     <nav class="main" id="mainnav">{nav}</nav>
@@ -45,7 +45,7 @@ def header(active):
 CHAT_DEFER = """<script>
 (function(){var d=false;function L(){if(d)return;d=true;var s=document.createElement('script');s.src='https://widgets.leadconnectorhq.com/loader.js';s.setAttribute('data-resources-url','https://widgets.leadconnectorhq.com/chat-widget/loader.js');s.setAttribute('data-widget-id','6a692fc6b0ee6ed3ac84f2b5');document.body.appendChild(s);}
 ['scroll','mousemove','touchstart','click','keydown'].forEach(function(ev){window.addEventListener(ev,L,{once:true,passive:true});});
-setTimeout(L,5000);})();
+setTimeout(L,15000);})();
 </script>"""
 
 def footer():
@@ -72,7 +72,7 @@ def footer():
         <a href="tel:+15618420303" class="fcall">561&middot;842&middot;0303</a>
       </div>
       <div class="fcol">
-        <h4>Explore</h4>
+        <h3>Explore</h3>
         <a href="tune-up.html">$129 Tune-Up</a>
         <a href="service.html">Bike Service</a>
         <a href="rentals.html">Rentals</a>
@@ -82,7 +82,7 @@ def footer():
         <a href="contact.html">Visit &amp; Contact</a>
       </div>
       <div class="fcol">
-        <h4>Areas We Serve</h4>
+        <h3>Areas We Serve</h3>
         <a href="jupiter.html">Jupiter</a>
         <a href="palm-beach-gardens.html">Palm Beach Gardens</a>
         <a href="juno-beach.html">Juno Beach</a>
@@ -91,13 +91,13 @@ def footer():
         <a href="singer-island.html">Singer Island</a>
       </div>
       <div class="fcol">
-        <h4>Get rolling</h4>
+        <h3>Get rolling</h3>
         <a href="book.html">Book a tune-up</a>
         <a href="rent.html">Reserve a bike</a>
         <a href="tel:+15618420303">Call the shop</a>
       </div>
       <div class="fcol">
-        <h4>Legal</h4>
+        <h3>Legal</h3>
         <a href="terms.html">Terms &amp; Conditions</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
@@ -134,11 +134,15 @@ GA_TAG = '''<!-- Google tag (gtag.js) -->
   gtag('config', 'G-RER3R64TQR');
 </script>'''
 
-REVIEWS = ('<!-- Reviews (GHL reputation widget) -->\n'
+REVIEWS = ('<!-- Reviews (GHL reputation widget), lazy-loaded -->\n'
  '<section class="section" style="padding-top:72px;padding-bottom:72px"><div class="in">\n'
- "<script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>\n"
- "<iframe class='lc_reviews_widget' src='https://reputationhub.site/reputation/widgets/review_widget/5CJFIRfK8FuvCqibTeYu' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%;'></iframe>\n"
- '</div></section>')
+ '<div id="reviews-holder" style="min-height:420px">\n'
+ "<iframe class='lc_reviews_widget' title='Customer reviews' loading='lazy' src='https://reputationhub.site/reputation/widgets/review_widget/5CJFIRfK8FuvCqibTeYu' frameborder='0' scrolling='no' style='min-width:100%;width:100%;min-height:420px'></iframe>\n"
+ '</div></div></section>\n'
+ '<script>(function(){var done=false;function L(){if(done)return;done=true;var s=document.createElement("script");s.src="https://reputationhub.site/reputation/assets/review-widget.js";document.body.appendChild(s);}'
+ 'var h=document.getElementById("reviews-holder");'
+ 'if("IntersectionObserver" in window&&h){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){L();o.disconnect();}});},{rootMargin:"400px"});o.observe(h);}'
+ 'else{window.addEventListener("load",L);}})();</script>')
 
 def head(title, desc, og_img, active, jsonld=""):
     return f'''<!DOCTYPE html>
@@ -157,7 +161,7 @@ def head(title, desc, og_img, active, jsonld=""):
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/{og_img}">
 {FONTS}
-<link rel="stylesheet" href="assets/styles.css?v=28">{jsonld}
+<link rel="stylesheet" href="assets/styles.css?v=29">{jsonld}
 </head>
 <body>
 {ticker()}
@@ -321,16 +325,16 @@ def build_index():
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow" data-reveal><span>Family-owned since 1975</span></div>
-      <h1 data-reveal>We come <em>to you.</em></h1>
-      <p class="lead" data-reveal>North Palm Beach's family bike shop for fifty years - doorstep tune-ups, bike and e-bike rentals delivered, and a full line of new bikes for the whole family.</p>
-      <div class="acts" data-reveal>
+      <div class="eyebrow"><span>Family-owned since 1975</span></div>
+      <h1>We come <em>to you.</em></h1>
+      <p class="lead">North Palm Beach's family bike shop for fifty years - doorstep tune-ups, bike and e-bike rentals delivered, and a full line of new bikes for the whole family.</p>
+      <div class="acts">
         <a href="tune-up.html" class="btn btn-teal btn-lg">$129 Tune-Up &rarr;</a>
         <a href="rent.html" class="btn btn-outline btn-lg">Rent a Bike</a>
       </div>
-      <div class="hero-trust" data-reveal><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Loved on Google &middot; <b>50 years</b> on the same bench</span></div>
+      <div class="hero-trust"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Loved on Google &middot; <b>50 years</b> on the same bench</span></div>
     </div>
-    <div class="hero-bento" data-reveal>
+    <div class="hero-bento">
       <div class="b big"><img src="assets/img/cat-kids.webp" alt="A family riding bikes on a palm-lined coastal trail" fetchpriority="high" width="747" height="1000"></div>
       <div class="b"><img src="assets/img/service-mechanic.webp" alt="Tony servicing a bike on the repair stand" loading="lazy" width="806" height="1000"></div>
       <div class="b"><img src="assets/img/retrospec/spotlight.webp" alt="Riding a new bike along the boardwalk" loading="lazy" width="1000" height="1000"></div>
