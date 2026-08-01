@@ -42,6 +42,12 @@ def header(active):
   </div></header>
 '''
 
+CHAT_DEFER = """<script>
+(function(){var d=false;function L(){if(d)return;d=true;var s=document.createElement('script');s.src='https://widgets.leadconnectorhq.com/loader.js';s.setAttribute('data-resources-url','https://widgets.leadconnectorhq.com/chat-widget/loader.js');s.setAttribute('data-widget-id','6a692fc6b0ee6ed3ac84f2b5');document.body.appendChild(s);}
+['scroll','mousemove','touchstart','click','keydown'].forEach(function(ev){window.addEventListener(ev,L,{once:true,passive:true});});
+setTimeout(L,5000);})();
+</script>"""
+
 def footer():
     return f'''<footer class="site"><div class="foot">
     <div class="foot-top">
@@ -115,7 +121,7 @@ def footer():
     </div>
   </div></footer>
 <script src="assets/app.js?v=3"></script>
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a692fc6b0ee6ed3ac84f2b5"></script>
+  {CHAT_DEFER}
 </body>
 </html>'''
 
@@ -190,7 +196,7 @@ def service_band():
       <div class="acts"><a href="book.html" class="btn btn-coral btn-lg">Book my pickup &rarr;</a><a href="tel:+15618420303" class="btn btn-ghost-light btn-lg">Call 561&middot;842&middot;0303</a></div>
     </div>
     <div class="service-photo" data-reveal>
-      <div class="frame"><img src="assets/img/service-mechanic.png" alt="Mechanic tuning a bike"></div>
+      <div class="frame"><img src="assets/img/service-mechanic.webp" alt="Mechanic tuning a bike"></div>
       <div class="badge"><div class="b">72-HOUR</div><div class="s">Typical turnaround</div></div>
     </div>
   </div>
@@ -248,7 +254,7 @@ MEMB_TEASER = """<section class="sec-tint"><div class="section" style="padding:6
       <p style="color:var(--slate);font-size:16px;line-height:1.7">The Ride Club covers two Full Tune-Ups a year, unlimited adjustments, free flat repairs and free doorstep pickup and delivery - for less than the price of one tune-up every six months. Pay yearly and get two months free.</p>
       <a href="service.html#ride-club" class="btn btn-teal" style="margin-top:22px">See what is included &rarr;</a>
     </div>
-    <div data-reveal><div class="mediaframe" style="aspect-ratio:5/4"><img src="assets/img/service-mechanic.png" alt="Mechanic servicing a bike"></div></div>
+    <div data-reveal><div class="mediaframe" style="aspect-ratio:5/4"><img src="assets/img/service-mechanic.webp" alt="Mechanic servicing a bike"></div></div>
   </div>
 </div></section>"""
 
@@ -325,9 +331,9 @@ def build_index():
       <div class="hero-trust" data-reveal><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span>Loved on Google &middot; <b>50 years</b> on the same bench</span></div>
     </div>
     <div class="hero-bento" data-reveal>
-      <div class="b big"><img src="assets/img/cat-kids.png" alt="A family riding bikes on a palm-lined coastal trail"></div>
-      <div class="b"><img src="assets/img/service-mechanic.png" alt="Tony servicing a bike on the repair stand"></div>
-      <div class="b"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a new bike along the boardwalk"></div>
+      <div class="b big"><img src="assets/img/cat-kids.webp" alt="A family riding bikes on a palm-lined coastal trail" fetchpriority="high" width="747" height="1000"></div>
+      <div class="b"><img src="assets/img/service-mechanic.webp" alt="Tony servicing a bike on the repair stand" loading="lazy" width="806" height="1000"></div>
+      <div class="b"><img src="assets/img/retrospec/spotlight.webp" alt="Riding a new bike along the boardwalk" loading="lazy" width="1000" height="1000"></div>
       <div class="hero-pill"><span class="n">$129</span><span class="s">Full Tune-Up<br>delivered free</span></div>
     </div>
   </div>
@@ -342,10 +348,10 @@ def build_index():
   <div class="eyebrow center" data-reveal style="justify-content:center"><span>What we do</span></div>
   <h2 class="h2" data-reveal style="text-align:center;max-width:720px;margin:0 auto 48px">Four things, done right.</h2>
   <div class="valgrid">
-    <a class="valcard" href="service.html" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.png" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p><span class="cardlink">See our services &rarr;</span></div></a>
-    <a class="valcard" href="rentals.html" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.png" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p><span class="cardlink">See rentals &rarr;</span></div></a>
-    <a class="valcard" href="new-bikes.html" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.jpg" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right.</p><span class="cardlink">See the lineup &rarr;</span></div></a>
-    <a class="valcard" href="ebikes.html" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.png" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind.</p><span class="cardlink">See the e-bikes &rarr;</span></div></a>
+    <a class="valcard" href="service.html" data-reveal><div class="vc-banner"><img src="assets/img/service-hero.webp" alt="A bike on the repair stand" loading="lazy"></div><div class="vc-body"><h3>Master repairs</h3><p>Fifty years at the bench, any make and any age. The $129 Full Tune-Up (delivered free) or a one-off fix - flats, brakes, gears, wheels, full overhauls. We come to you, and it is 100% happy or we fix it free.</p><span class="cardlink">See our services &rarr;</span></div></a>
+    <a class="valcard" href="rentals.html" data-reveal><div class="vc-banner"><img src="assets/img/rentals-hero.webp" alt="Rental bikes ready for delivery" loading="lazy"></div><div class="vc-body"><h3>Rentals, delivered</h3><p>Men's, women's and kids' bikes plus e-bikes, delivered to your hotel, condo or home with helmet and lock included. Free delivery on rentals of 3 days or more; otherwise a flat $25, or pick up at the shop free.</p><span class="cardlink">See rentals &rarr;</span></div></a>
+    <a class="valcard" href="new-bikes.html" data-reveal><div class="vc-banner"><img src="assets/img/retrospec/spotlight.webp" alt="Riding a Retrospec bike on the boardwalk" loading="lazy"></div><div class="vc-body"><h3>New bikes</h3><p>A full line of Retrospec bikes for the whole family - balance and kids' bikes, beach cruisers, city bikes and e-bikes. Good quality at a fair price, set up right.</p><span class="cardlink">See the lineup &rarr;</span></div></a>
+    <a class="valcard" href="ebikes.html" data-reveal><div class="vc-banner"><img src="assets/img/cat-ebike.webp" alt="A family-friendly e-bike on a coastal boardwalk" loading="lazy"></div><div class="vc-body"><h3>E-bikes</h3><p>Family-friendly e-bikes, made for the whole family - easy step-through and classic frames for both men and women. Comfortable, affordable pedal-assist to flatten the bridges and the headwind.</p><span class="cardlink">See the e-bikes &rarr;</span></div></a>
   </div>
 </section>
 
@@ -353,7 +359,7 @@ def build_index():
 
 <section class="sec-tint">
   <div class="split section" style="padding-top:80px;padding-bottom:80px">
-    <div class="mediaframe" data-reveal><img src="assets/img/rentals-hero.png" alt="A family on beach cruisers riding the coast at sunset"></div>
+    <div class="mediaframe" data-reveal><img src="assets/img/rentals-hero.webp" alt="A family on beach cruisers riding the coast at sunset"></div>
     <div data-reveal>
       <div class="eyebrow"><span>Visiting the Palm Beaches</span></div>
       <h2 class="sub-h">Rentals to your door.</h2>
@@ -403,11 +409,11 @@ def build_index():
 '''
     return head("Lake Park Bicycles - $129 Doorstep Tune-Up &amp; Bike Rentals, North Palm Beach",
                 "Bike service and rentals in North Palm Beach since 1975. The $129 Full Tune-Up delivered free this summer (reg $169); Safety Check from $99. Plus bike and e-bike rentals delivered to your hotel, condo or home. Call 561-842-0303.",
-                "cat-kids.png","home",jsonld) + body + footer()
+                "cat-kids.webp","home",jsonld) + body + footer()
 
 def build_tuneup():
     body = f'''
-<section class="photo-hero"><div class="hero-bg"><img src="assets/img/service-hero.png" alt="A mechanic servicing a bike on the repair stand"></div><div class="in">
+<section class="photo-hero"><div class="hero-bg"><img src="assets/img/service-hero.webp" alt="A mechanic servicing a bike on the repair stand"></div><div class="in">
   <div class="crumb" data-reveal><a href="index.html">Home</a> / $129 Tune-Up</div>
   <div class="eyebrow" data-reveal><span>The doorstep tune-up</span></div>
   <h1 data-reveal>Fix it.<br><em>Never leave home.</em></h1>
@@ -448,11 +454,11 @@ def build_tuneup():
 '''
     return head("$129 Full Tune-Up - Free Doorstep Delivery - Lake Park Bicycles",
                 "The bike tune-up that comes to you: our $129 Full Tune-Up delivered free this summer (reg $169), Safety Check from $99, 72-hour turnaround within 10 miles of North Palm Beach, 100% happy or we fix it free.",
-                "service-hero.png","tuneup") + body + footer()
+                "service-hero.webp","tuneup") + body + footer()
 
 def build_service():
     body = f'''
-<section class="photo-hero"><div class="hero-bg"><img src="assets/img/service-mechanic.png" alt="A mechanic servicing a bike in the Lake Park Bicycles workshop"></div><div class="in">
+<section class="photo-hero"><div class="hero-bg"><img src="assets/img/service-mechanic.webp" alt="A mechanic servicing a bike in the Lake Park Bicycles workshop"></div><div class="in">
   <div class="crumb" data-reveal><a href="index.html">Home</a> / Service</div>
   <div class="eyebrow" data-reveal><span>The service bench</span></div>
   <h1 data-reveal>Any bike.<br><em>Any problem.</em></h1>
@@ -506,7 +512,7 @@ def build_service():
         <li>We install the battery or controller you supply</li>
       </ul>
     </div>
-    <div data-reveal><div class="mediaframe" style="aspect-ratio:5/4"><img src="assets/img/cat-ebike.png" alt="E-bike on a coastal boardwalk"></div></div>
+    <div data-reveal><div class="mediaframe" style="aspect-ratio:5/4"><img src="assets/img/cat-ebike.webp" alt="E-bike on a coastal boardwalk"></div></div>
   </div>
 </section>
 
@@ -575,7 +581,7 @@ def build_service():
 '''
     return head("Mobile Bike Repair Near You - North Palm Beach to Jupiter | Lake Park Bicycles",
                 "Complete bike repair in North Palm Beach: brakes, drivetrain, wheels, bearings, e-bikes and assembly. Full a la carte price list, doorstep service, and 100% happy or we fix it free.",
-                "service-hero.png","service") + body + footer()
+                "service-hero.webp","service") + body + footer()
 
 RESERVE_STYLE = r'''<style>
 .wiz{max-width:860px;margin:0 auto;padding:46px 28px 96px}
@@ -896,7 +902,7 @@ RESERVE_SECTION = RESERVE_STYLE + '''
 
 def build_rentals():
     body = f'''
-<section class="photo-hero"><div class="hero-bg"><img src="assets/img/rentals-hero.png" alt="A family on a coastal vacation bike ride in North Palm Beach"></div><div class="in">
+<section class="photo-hero"><div class="hero-bg"><img src="assets/img/rentals-hero.webp" alt="A family on a coastal vacation bike ride in North Palm Beach"></div><div class="in">
   <div class="crumb" data-reveal><a href="index.html">Home</a> / Rentals</div>
   <div class="eyebrow" data-reveal><span>Cruise the coast</span></div>
   <h1 data-reveal>Rent &amp;<br><em>roll.</em></h1>
@@ -954,7 +960,7 @@ def build_rentals():
 '''
     return head("Bike &amp; E-Bike Rentals, Delivered | Lake Park Bicycles",
                 "Bike and e-bike rentals in North Palm Beach, delivered to your hotel, condo or home. Free delivery on 3+ day rentals. Helmet and lock included. Call 561-842-0303.",
-                "rentals-hero.png","rentals") + body + footer()
+                "rentals-hero.webp","rentals") + body + footer()
 
 def build_about():
     body = f'''
@@ -967,7 +973,7 @@ def build_about():
 <style>.tsplit{{align-items:start}}@media(min-width:1001px){{.tsplit{{grid-template-columns:.9fr 1.1fr}}}}</style>
 <section class="section" style="padding-top:34px">
   <div class="split tsplit">
-    <div data-reveal><div class="mediaframe" style="aspect-ratio:3/4"><img src="assets/img/tony.jpg" alt="Tony, owner of Lake Park Bicycles, giving a thumbs up in his shop polo"></div></div>
+    <div data-reveal><div class="mediaframe" style="aspect-ratio:3/4"><img src="assets/img/tony.webp" alt="Tony, owner of Lake Park Bicycles, giving a thumbs up in his shop polo"></div></div>
     <div data-reveal>
       <div class="eyebrow"><span>From shop kid to shop owner</span></div>
       <h2 class="sub-h" style="font-size:clamp(34px,4.6vw,54px)">Started at 15.<br><em style="color:var(--teal)">Never left.</em></h2>
@@ -1000,7 +1006,7 @@ def build_about():
       <p style="color:var(--slate);font-size:16px;line-height:1.75">School events, charity rides, community nights - if the neighborhood is out, odds are Tony is too, talking bikes with anyone who will listen (and usually fixing a flat on the spot). The kids he fitted for their first bikes now bring in their own kids. That's the whole point.</p>
       <p style="color:var(--slate);font-size:16px;line-height:1.75;margin-top:16px">These days Tony will come to you, too - tune-ups and rentals picked up and delivered anywhere from Jupiter to Lake Park. Stop by the shop, or let him bring the shop to your door. Fresh bikes are rolling onto the floor soon.</p>
     </div>
-    <div data-reveal><div class="mediaframe" style="aspect-ratio:4/5"><img src="assets/img/tony-community.jpg" alt="The Lake Park Bicycles truck loaded with bikes, out on a delivery run"></div></div>
+    <div data-reveal><div class="mediaframe" style="aspect-ratio:4/5"><img src="assets/img/tony-community.webp" alt="The Lake Park Bicycles truck loaded with bikes, out on a delivery run"></div></div>
 </div></section>
 
 {REVIEWS}
@@ -1011,11 +1017,11 @@ def build_about():
 '''
     return head("Meet Tony - Lake Park Bicycles, Est. 1975",
                 "Meet Tony: he walked into this North Palm Beach bike shop at 15, learned the craft from Stuart Weidenfeld, bought the shop, and has kept the community rolling for 50 years.",
-                "tony.jpg","about") + body + footer()
+                "tony.webp","about") + body + footer()
 
 def build_contact():
     body = f'''
-<section class="photo-hero"><div class="hero-bg"><img src="assets/img/visit-hero.png" alt="A teal beach cruiser resting by the Intracoastal at golden hour in North Palm Beach"></div><div class="in">
+<section class="photo-hero"><div class="hero-bg"><img src="assets/img/visit-hero.webp" alt="A teal beach cruiser resting by the Intracoastal at golden hour in North Palm Beach"></div><div class="in">
   <div class="crumb" data-reveal><a href="index.html">Home</a> / Visit</div>
   <div class="eyebrow" data-reveal><span>Say hello</span></div>
   <h1 data-reveal>Let's get you <em>rolling.</em></h1>
@@ -1027,7 +1033,7 @@ def build_contact():
   <h2 class="sub-h" data-reveal>Pick your lane.</h2>
   <div class="path-grid">
     <a class="path-card" href="rent.html" data-reveal>
-      <div class="pc-img"><img src="assets/img/rentals-hero.png" alt="Rental bikes delivered to your door"></div>
+      <div class="pc-img"><img src="assets/img/rentals-hero.webp" alt="Rental bikes delivered to your door"></div>
       <div class="pc-body">
         <div class="pc-ey">Renting a bike?</div>
         <div class="pc-t">Reserve a bike</div>
@@ -1036,7 +1042,7 @@ def build_contact():
       </div>
     </a>
     <a class="path-card" href="tune-up.html" data-reveal>
-      <div class="pc-img"><img src="assets/img/service-hero.png" alt="A bike getting a tune-up on the workshop stand"></div>
+      <div class="pc-img"><img src="assets/img/service-hero.webp" alt="A bike getting a tune-up on the workshop stand"></div>
       <div class="pc-body">
         <div class="pc-ey">Need a tune-up?</div>
         <div class="pc-t">Book the $129 tune-up</div>
@@ -1085,7 +1091,7 @@ def build_contact():
 '''
     return head("Visit &amp; Contact - Lake Park Bicycles - 561-842-0303",
                 "Questions? Call 561-842-0303 or send a note and Tony gets right back to you. Rentals delivered and $129 tune-up pickups across the Palm Beaches.",
-                "cat-city.png","visit") + body + RESERVE_JS + footer()
+                "cat-city.webp","visit") + body + RESERVE_JS + footer()
 
 def build_rent():
     body = RESERVE_STYLE + '''
@@ -1161,7 +1167,7 @@ def build_book():
   <p class="lead" data-reveal style="text-align:center;max-width:600px;margin:14px auto 0">Tune-up, repair, or a quick fix - add each bike, tell us what it needs, and we come get it. Your total and delivery update as you go. Pickups run Mon-Sat, 9 to 4.</p>
 </div></section>
 <div style="max-width:1000px;margin:4px auto 0;padding:0 28px" data-reveal>
-  <img src="assets/img/service-mechanic.png" alt="A Lake Park Bicycles mechanic servicing a bike on the repair stand" style="width:100%;height:min(32vh,290px);object-fit:cover;border-radius:20px;box-shadow:var(--shadow)">
+  <img src="assets/img/service-mechanic.webp" alt="A Lake Park Bicycles mechanic servicing a bike on the repair stand" style="width:100%;height:min(32vh,290px);object-fit:cover;border-radius:20px;box-shadow:var(--shadow)">
 </div>
 <div class="wiz">
   <div class="wizsteps"><i class="on"></i><i id="sb2"></i><i id="sb3"></i></div>
@@ -1330,7 +1336,7 @@ document.getElementById('sendBtn').addEventListener('click',function(e){
 """
     return head("Book a Service or Repair - Lake Park Bicycles",
                 "Book doorstep bike service: a tune-up (Safety Check $99, Full Tune-Up $129, Overhaul $199) or any repair - flats, brakes, gears, wheels, e-bikes. Pickup and delivery, free once your ticket reaches $129.",
-                "service-hero.png","tuneup") + BODY + ADDR_AC + footer()
+                "service-hero.webp","tuneup") + BODY + ADDR_AC + footer()
 
 def build_thanks():
     body = '''
@@ -1349,7 +1355,7 @@ def build_thanks():
 '''
     return head("Thank you - Lake Park Bicycles",
                 "Thanks - we received your request and will be in touch within the hour to confirm.",
-                "cat-city.png","") + body + footer()
+                "cat-city.webp","") + body + footer()
 
 BASE = "https://www.lakeparkbicycles.com"
 
@@ -1479,7 +1485,7 @@ def build_city(c):
       <p style="color:var(--slate);font-size:16.5px;line-height:1.7">Our most-popular <strong>Full Tune-Up is $129 this summer</strong> (regularly $169) with <strong>free pickup and delivery to {name}</strong> - or a quick Safety Check for $99. Any make, any age: beach cruisers, kids' bikes, hybrids, road and mountain bikes. We collect it from your driveway, tune it on the bench, and have it back within 72 hours. 100% happy or we fix it free. E-bikes serviced separately: $20 battery evaluation, electrical diagnostics from $75.</p>
       <a href="tune-up.html" class="btn btn-teal" style="margin-top:22px">See the $129 tune-up &rarr;</a>
     </div>
-    <div data-reveal><img src="assets/img/service-mechanic.png" alt="Mobile bike tune-up and repair delivered in {name}, Florida" style="width:100%;border-radius:20px;box-shadow:var(--shadow)"></div>
+    <div data-reveal><img src="assets/img/service-mechanic.webp" alt="Mobile bike tune-up and repair delivered in {name}, Florida" style="width:100%;border-radius:20px;box-shadow:var(--shadow)"></div>
   </div>
 </section>
 
@@ -1519,7 +1525,7 @@ def build_city(c):
 '''
     return head(f"{name} Bike Repair &amp; Rentals | Lake Park Bicycles",
                 f"Mobile bike repair and bike &amp; e-bike rental delivery in {name}, Florida. $129 doorstep tune-up with free delivery, rentals to your door, any make. Serving {c['hoods']}. Call 561-842-0303.",
-                "cat-city.png","",ld) + body + footer()
+                "cat-city.webp","",ld) + body + footer()
 
 def build_terms():
     body = '''
@@ -1589,7 +1595,7 @@ def build_terms():
 '''
     return head("Terms &amp; Conditions - Lake Park Bicycles",
                 "Terms and conditions for Lake Park Bicycles doorstep tune-ups, bicycle repairs, and bike and e-bike rentals in North Palm Beach, Florida.",
-                "cat-city.png","") + body + footer()
+                "cat-city.webp","") + body + footer()
 
 def build_privacy():
     body = '''
@@ -1647,7 +1653,7 @@ def build_privacy():
 '''
     return head("Privacy Policy - Lake Park Bicycles",
                 "How Lake Park Bicycles collects, uses, and protects your information when you use our website and book tune-ups, repairs, or bike rentals.",
-                "cat-city.png","") + body + footer()
+                "cat-city.webp","") + body + footer()
 
 TONY_TIPS = [
  {"cat":"E-bikes","t":"Keep your e-bike's bolts tight","b":"E-bikes are heavier and faster, so vibration backs bolts out quicker than on a regular bike. Once a month, run a 4, 5 and 6mm allen key over the stem, bar clamp, seatpost and any rack or motor-mount bolts and snug them until firm - most cockpit bolts want about 5 to 6 Nm if you have a torque wrench. A dab of blue threadlocker on rack and fender bolts keeps them from rattling loose."},
@@ -1663,7 +1669,7 @@ TONY_TIPS = [
 ]
 
 def tony_tip(tip):
-    return ('<div class="tonytip"><img src="assets/img/tony.jpg" alt="Tony, owner of Lake Park Bicycles">'
+    return ('<div class="tonytip"><img src="assets/img/tony.webp" alt="Tony, owner of Lake Park Bicycles">'
             '<div><div class="lab">Tony\'s tip</div><div class="tt">'+tip["t"]+'</div>'
             '<div class="tb">'+tip["b"]+' <a href="tips.html" style="color:var(--teal-d);font-weight:600;white-space:nowrap">More of Tony\'s tips &rarr;</a></div></div></div>')
 
@@ -1675,7 +1681,7 @@ def tony_tip_month():
   <div class="eyebrow center" data-reveal style="justify-content:center"><span>From Tony's bench</span></div>
   <h2 class="sub-h" data-reveal style="text-align:center;margin-bottom:28px">A tip from Tony.</h2>
   <div class="tonytip tonytip-feat">
-    <img src="assets/img/tony.jpg" alt="Tony, owner of Lake Park Bicycles">
+    <img src="assets/img/tony.webp" alt="Tony, owner of Lake Park Bicycles">
     <div>
       <div class="lab">Tony's tip of the month</div>
       <div class="tt" id="mt-t">'''+TONY_TIPS[0]["t"]+'''</div>
@@ -1697,7 +1703,7 @@ def tony_tip_week():
   <div class="eyebrow center" data-reveal style="justify-content:center"><span>Tip Tuesday</span></div>
   <h2 class="sub-h" data-reveal style="text-align:center;margin-bottom:28px">Straight from Tony's bench.</h2>
   <div class="tonytip tonytip-feat">
-    <img src="assets/img/tony.jpg" alt="Tony, owner of Lake Park Bicycles">
+    <img src="assets/img/tony.webp" alt="Tony, owner of Lake Park Bicycles">
     <div>
       <div class="lab">Tony's tip &middot; <span id="ht-d">this Tuesday</span></div>
       <div class="tt" id="ht-t">'''+TONY_TIPS[0]["t"]+'''</div>
@@ -1727,7 +1733,7 @@ def build_tips():
     </div>
     <div data-reveal>
       <div class="tonytip tonytip-feat">
-        <img src="assets/img/tony.jpg" alt="Tony, owner of Lake Park Bicycles">
+        <img src="assets/img/tony.webp" alt="Tony, owner of Lake Park Bicycles">
         <div><div class="lab">Tony's tip &middot; <span id="wt-d">this Tuesday</span></div>
         <div class="tt" id="wt-t">'''+TONY_TIPS[0]["t"]+'''</div>
         <div class="tb" id="wt-b">'''+TONY_TIPS[0]["b"]+'''</div></div>
@@ -1757,7 +1763,7 @@ def build_tips():
 ''')
     return head("Tony's Tips - Bike &amp; E-Bike Maintenance | Lake Park Bicycles",
                 "Tony's Tips: 50 years of bike wrench wisdom on e-bike care, tire pressure, chain lube, brakes and more - a fresh maintenance tip every Tuesday from Lake Park Bicycles.",
-                "cat-city.png","")+body+footer()
+                "cat-city.webp","")+body+footer()
 
 def build_newbikes():
     # Exactly the bikes Lake Park Bicycles stocks, ordered smallest-to-largest.
@@ -1805,7 +1811,7 @@ def build_newbikes():
       <p style="color:var(--slate);font-size:16px;line-height:1.75;margin-top:16px">We picked it because it fits how this shop has always worked: get a good bike under someone at a fair price, set it up right, and stand behind it. Every new bike leaves here fully assembled, tuned and safety-checked by Tony - not flat-packed in a box.</p>
       <div class="acts" style="margin-top:20px"><a href="contact.html" class="btn btn-teal">Come see the lineup &rarr;</a><a href="tel:+15618420303" class="btn btn-outline">Call 561&middot;842&middot;0303</a></div>
     </div>
-    <div data-reveal><div class="mediaframe" style="aspect-ratio:4/5"><img src="assets/img/retrospec/spotlight.jpg" alt="A rider on a Retrospec Beaumont Rev electric city bike"></div></div>
+    <div data-reveal><div class="mediaframe" style="aspect-ratio:4/5"><img src="assets/img/retrospec/spotlight.webp" alt="A rider on a Retrospec Beaumont Rev electric city bike"></div></div>
 </div></section>
 
 <section class="section" style="padding-top:70px">
@@ -1828,7 +1834,7 @@ def build_newbikes():
               '{"@type":"ListItem","position":2,"name":"New Bikes","item":"https://www.lakeparkbicycles.com/new-bikes"}]}</script>')
     return head("New Bikes - Retrospec Bikes &amp; E-Bikes | Lake Park Bicycles",
                 "Now a Retrospec dealer in North Palm Beach. Kids' bikes, beach cruisers, city and hybrid bikes, and the Beaumont Rev electric - from $159. See them at Lake Park Bicycles or call 561-842-0303.",
-                "retrospec/spotlight.jpg","newbikes",jsonld) + body + footer()
+                "retrospec/spotlight.webp","newbikes",jsonld) + body + footer()
 
 EBIKES = [
  {"slug":"vetus-1","name":"Vetus 1 Fat Tire","type":"Fat-tire e-bike","stock":True,"pa":"749","pb":"699","colors":[],
